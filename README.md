@@ -11,8 +11,8 @@ The distil labs platform is a user-friendly solution that democratises access to
 
 This repository contains practical examples demonstrating various use cases of the distil labs platform. Each example is contained in its own directory with complete code and documentation.
 
-### **[Text Classification](classification-tutorial)**
-This example demonstrates how to fine-tune a small language model (SLM) for text classification using the distil labs platform. You can train a model that solves any of the four example tasks we provide or modify any of the examples to match your use-case. 
+### Text classification
+[This example](classification-tutorial) demonstrates how to fine-tune a small language model (SLM) for text classification using the distil labs platform. You can train a model that solves any of the four example tasks we provide or modify any of the examples to match your use-case. 
 
 
 
