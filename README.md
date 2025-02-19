@@ -1,6 +1,6 @@
 # distil labs examples
 
-Welcome to the distil labs Platform - your gateway to effortless model fine-tuning without extensive machine learning expertise.
+Welcome to the distil labs platform - your gateway to effortless model fine-tuning without extensive machine learning expertise.
 
 ## Overview
 
