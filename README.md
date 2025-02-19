@@ -11,8 +11,8 @@ The distil labs platform is a user-friendly solution that democratises access to
 
 This repository contains practical examples demonstrating various use cases of the distil labs platform. Each example is contained in its own directory with complete code and documentation.
 
-### Text classification
-[This example](classification-tutorial) demonstrates how to fine-tune a small language model (SLM) for text classification using the distil labs platform. You can train a model that solves any of the four example tasks we provide or modify any of the examples to match your use-case. 
+### Text classification training and deployment
+[This example](classification-tutorial) demonstrates how to fine-tune a small language model (SLM) for text classification and deploy it on your local machine. You can train a model that solves any of the four example tasks we provide or modify any of the examples to match your use-case. 
 
 
 
@@ -28,12 +28,12 @@ To start working with this repository:
 
 | Platform | Shell | Command to activate virtual environment |
 | --- | --- |----------------------------------------|
-| POSIX | bash/zsh | `$ source distilenv/bin/activate`      |
-|  | fish | `$ source distilenv/bin/activate.fish` |
-|  | csh/tcsh | `$ source distilenv/bin/activate.csh`  |
-|  | pwsh | `$ distilenv/bin/Activate.ps1`         |
-| Windows | cmd.exe | `C:\> distilenv\Scripts\activate.bat`  |
-|  | PowerShell | `PS C:\> distilenv\Scripts\Activate.ps1` |
+| POSIX | bash/zsh | `$ source .distilenv/bin/activate`      |
+|  | fish | `$ source .distilenv/bin/activate.fish` |
+|  | csh/tcsh | `$ source .distilenv/bin/activate.csh`  |
+|  | pwsh | `$ .distilenv/bin/Activate.ps1`         |
+| Windows | cmd.exe | `C:\> .distilenv\Scripts\activate.bat`  |
+|  | PowerShell | `PS C:\> .distilenv\Scripts\Activate.ps1` |
 
 6. Install jupyter with `pip install jupyter`
 7. Launch jupyter in your browser with `jupyter notebook`
