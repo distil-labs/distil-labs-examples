@@ -1,4 +1,4 @@
-# Distil Labs Examples
+# distil labs Examples
 
 Welcome to the distil labs Platform - your gateway to effortless model fine-tuning without extensive machine learning expertise.
 
@@ -45,4 +45,4 @@ We welcome contributions! Please submit a PR if you want to contribute a new exa
 
 ---
 
-Visit [Distil Labs](https://distillabs.ai) to learn more about our platform.
+Visit [distil labs](https://distillabs.ai) to learn more about our platform.
