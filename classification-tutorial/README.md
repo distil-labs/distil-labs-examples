@@ -41,7 +41,8 @@ Use the [classification-training.ipynb](classification-training.ipynb) notebook 
 
 To prepare for the training kick-off, modify the data in one of the examples directory (feel free to use excel/google sheets to edit the .csv files) or simply pick and example as is.
 
-## Model Deployment
+### Model Deployment
+
 In this notebook we will deploy a trained classification small language model (SLM) with the **distil labs** platform. 
 
 The model binaries can be downloaded using the `model` API by downloading the tarball and extracting into to the `model` directory.  The downloaded file will be called `*-model.tar`. Once extracted, you should find a `model/` directory which should be copied to the same directory as this notebook. At this point, your current working directory should look something like:
