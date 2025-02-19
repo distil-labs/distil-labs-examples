@@ -4,12 +4,12 @@ Welcome to the distil labs Platform - your gateway to effortless model fine-tuni
 
 ## Overview
 
-distil labs Platform is a user-friendly solution that democratizes access to state-of-the-art model fine-tuning. Whether you're a developer, researcher, or business professional, you can create custom, high-performance models tailored to your specific needs over night.
+The distil labs platform is a user-friendly solution that democratises access to state-of-the-art model fine-tuning. Whether you're a developer, researcher, or business professional, you can create custom, high-performance models tailored to your specific needs overnight.
 
 
 ## Examples
 
-This repository contains practical examples demonstrating various use cases of the Distil Labs Platform. Each example is contained in its own directory with complete code and documentation.
+This repository contains practical examples demonstrating various use cases of the distil labs platform. Each example is contained in its own directory with complete code and documentation.
 
 ### **[Text Classification](classification-tutorial)**
 This example demonstrates how to fine-tune a small language model (SLM) for text classification using the distil labs platform. You can train a model that solves any of the four example tasks we provide or modify any of the examples to match your use-case. 
