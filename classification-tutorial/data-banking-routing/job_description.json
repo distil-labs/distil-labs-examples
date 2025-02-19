@@ -1,0 +1,13 @@
+{
+  "task_description": "Classify the bank customer service requests into one of the provided classes",
+  "classes_description": {
+    "balance_not_updated_after_cheque_or_cash_deposit": "Requests regarding a recent cheque or cash deposit not showing up in the available account balance. The customer's ledger balance does not reflect the deposit after some time has passed.",
+    "card_payment_fee_charged": "Requests questioning an unexpected or additional fee charged for making a payment or purchase with a debit or credit card. The customer seeks clarification on the reason for the fee.",
+    "cash_withdrawal_charge": "Requests related to being charged a fee for withdrawing cash from an ATM. The customer wants to know the reason, the exact fee amount, and if it can be waived.",
+    "declined_cash_withdrawal": "Requests about attempting to withdraw cash from an ATM but having the transaction declined. The customer has tried multiple ATMs but still faces the same issue with their card.",
+    "direct_debit_payment_not_recognised": "Requests regarding an unauthorized direct debit payment charged to the account. The customer claims they did not set it up and wants the bank to investigate its validity.",
+    "transaction_charged_twice": "Requests related to identifying the same transaction or payment amount being charged to the account multiple times within a short period, resulting in duplicate charges that need to be reversed.",
+    "transfer_fee_charged": "Requests about incurring an extra or unexpected fee when sending money to another recipient. The customer seeks clarification on the reason, a breakdown of the fee, and potentially a waiver.",
+    "wrong_amount_of_cash_received": "Requests where the customer received the incorrect or lower amount of physical cash than requested during an ATM withdrawal. The account was debited more than the cash dispensed."
+  }
+}

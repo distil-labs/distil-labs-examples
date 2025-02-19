@@ -1,0 +1,9 @@
+{
+  "task_description": "Classify the descriptions into one of the provided classes.",
+  "classes_description": {
+    "household": "This class represents descriptions that describe household items.",
+    "books": "This class represents descriptions that describe books.",
+    "clothing_and_accessories": "This class represents descriptions that describe clothing and related accessories.",
+    "electronics": "This class represents descriptions that describe electronics."
+  }
+}

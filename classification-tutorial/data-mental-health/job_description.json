@@ -1,0 +1,9 @@
+{
+  "task_description": "Classify the comments into one of the provided classes.",
+  "classes_description": {
+    "depression": "Comments that indicate someone is having feelings of depression.",
+    "normal": "Comments that do not indicate any mental health issues.",
+    "bipolar": "Comments that relate to bipolar condition.",
+    "anxiety": "Comments that indicate someone is experiencing anxiety."
+  }
+}

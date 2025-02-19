@@ -1,0 +1,12 @@
+{
+  "task_description": "Classify workplace injury narratives into standardized OIICS (Occupational Injuries and Illnesses Classification System) categories",
+  "classes_description": {
+    "violence_and_other_injuries_by_persons_or_animals": "Incidents involving intentional or unintentional injury caused by persons or animals. This includes workplace violence, attacks, aggressive behavior from patients/customers, animal bites, or other interactions resulting in injury.",
+    "transportation_incidents": "Events involving vehicles or transportation equipment that result in injury. This includes road accidents, forklift incidents, aircraft crashes, or injuries occurring during the operation or maintenance of transportation equipment.",
+    "fires_and_explosions": "Incidents involving uncontrolled burning or rapid combustion resulting in injury. This includes industrial fires, chemical explosions, equipment malfunctions leading to explosions, or exposure to blast waves.",
+    "falls_slips_trips": "Events where injury results from falling to a lower level, slipping on surfaces, or tripping over objects. This includes falls from heights, slips on wet floors, or trips over workplace obstacles.",
+    "exposure_to_harmful_substances_or_environments": "Incidents involving contact with or exposure to hazardous materials or dangerous environmental conditions. This includes chemical exposure, extreme temperatures, electrical hazards, or toxic substances.",
+    "contact_with_objects_and_equipment": "Events where injury occurs due to physical contact with workplace objects or equipment. This includes being struck by falling objects, caught in machinery, or compressed by equipment.",
+    "overexertion_and_bodily_reaction": "Incidents resulting from excessive physical effort or repetitive motion. This includes injuries from lifting heavy objects, repetitive strain, or sudden bodily movements leading to sprains or strains."
+  }
+}
