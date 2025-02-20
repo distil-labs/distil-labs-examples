@@ -11,9 +11,12 @@ The distil labs platform is a user-friendly solution that democratises access to
 
 This repository contains practical examples demonstrating various use cases of the distil labs platform. Each example is contained in its own directory with complete code and documentation.
 
-### Text classification training and deployment
+### Text classification: training and deployment
 [This example](classification-tutorial) demonstrates how to fine-tune a small language model (SLM) for text classification and deploy it on your local machine. You can train a model that solves any of the four example tasks we provide or modify any of the examples to match your use-case. 
 
+
+### Text classification: how to write a job description
+[This example](classification-how-to-write-job-description) demonstrates how to refine a job description for classification and then use it to train nand SLM. You can iterate over the job description until our chosen 'teacher' LLM can solve the test dataset well enough. If a large model can solve a problem, we can then distil the problem-solving ability of the larger model into a small model.
 
 
 ## Getting Started
@@ -23,7 +26,7 @@ To start working with this repository:
 1. Clone this repository (or download as a zip file)
 2. Make sure you have python 3.10 or later installed on your machine
 3. Open the terminal and navigate to the direcotory of this README
-4. Create a python virtual environment using `python3 -m venv .distilenv`
+4. Create a [python virtual environment](https://docs.python.org/3/library/venv.html#) using `python3 -m venv .distilenv`
 5. Activate the environment with one of the folloing commands:
 
 | Platform | Shell | Command to activate virtual environment |

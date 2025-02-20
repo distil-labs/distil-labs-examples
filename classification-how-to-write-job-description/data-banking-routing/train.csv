@@ -1,0 +1,49 @@
+question,answer
+What happens if I deposit a cheque accidentally?,balance_not_updated_after_cheque_or_cash_deposit
+The balance hasn't changed yet after depositing a cheque with some money.,balance_not_updated_after_cheque_or_cash_deposit
+I did a cash deposit to my account but it doesn't show up,balance_not_updated_after_cheque_or_cash_deposit
+Why is the check I deposited this morning not showing up?,balance_not_updated_after_cheque_or_cash_deposit
+"I deposited some cash but it hasn't shown up in my account yet, what's going on?",balance_not_updated_after_cheque_or_cash_deposit
+I've deposited a check in my account but the cash isn't showing as available.,balance_not_updated_after_cheque_or_cash_deposit
+What is this fee for card payment?,card_payment_fee_charged
+Why did I get charged more for using my card?,card_payment_fee_charged
+"I have been charged a fee, I didn't know about this fee before! When do you charge extra for card payments?",card_payment_fee_charged
+Why was I charged an extra fee when using the card?,card_payment_fee_charged
+A fee came along with me paying with card,card_payment_fee_charged
+Why was the price higher when I paid with my card?,card_payment_fee_charged
+"So, I was just charged for my recent ATM withdrawal and any withdrawal prior to this has been free. What is the issue here?",cash_withdrawal_charge
+There was an unexpected fee for my cash withdrawal!,cash_withdrawal_charge
+Why was I charged a fee for withdrawing money?,cash_withdrawal_charge
+Are there ATM fees?,cash_withdrawal_charge
+"I was charged a fee when withdrawing cash, can you explain why?",cash_withdrawal_charge
+Is there a fee for a cash withdrawal?,cash_withdrawal_charge
+"When I tried to access my cash, I wasn't allowed!",declined_cash_withdrawal
+I could not get money from an ATM,declined_cash_withdrawal
+I was getting some cash out of the ATM but it cancelled on me without warning.,declined_cash_withdrawal
+Has my account been frozen?  I tried to use my card but the ATM would not dispense cash.,declined_cash_withdrawal
+My ATM withdrawal was declined.,declined_cash_withdrawal
+"Hello, is there any way to double check my card? I have never had issues with withdraws in the past, but this morning on the way to work it was unexpectedly declined.",declined_cash_withdrawal
+what is this charge i didnt do it what can i do,direct_debit_payment_not_recognised
+i do not know what this charge is for,direct_debit_payment_not_recognised
+"Recently, a few weeks ago there was a transaction made on my account by some seller that I don't recognize. I am very certain that didn't happen  and will like for you to trace back to make sure.",direct_debit_payment_not_recognised
+What do I do if I find a debit charge that I know I didn't do in my billing statement?,direct_debit_payment_not_recognised
+"I just went through a old statement and noticed that a very large payment went through and i did not make it. It was from a few months ago, can I still dispute the payment?",direct_debit_payment_not_recognised
+A direct debit payment that I didn't authorise shows up in my app.,direct_debit_payment_not_recognised
+I was double charged at a restaurant can you take the second charge off?,transaction_charged_twice
+My account is showing a double charge.,transaction_charged_twice
+My bill shows the same charge more than once,transaction_charged_twice
+"I think I was charged twice, please help!",transaction_charged_twice
+There are duplicate transactions on my account,transaction_charged_twice
+Why am I getting double charged for multiple transactions?,transaction_charged_twice
+"I transferred money, but I think I've been charged a fee for it?",transfer_fee_charged
+Can you please explain why I was charged an extra fee for my transfer?,transfer_fee_charged
+I used this account a lot during the last month to manage my payments for my new place abroad. Seems that suddenly fees have increased? Shouldn't you instead reward your frequent customers instead of putting an additional fee suddenly?!,transfer_fee_charged
+Will I get extra charges?,transfer_fee_charged
+Why did you charge me a fee when I made a transfer?,transfer_fee_charged
+I use my card internationally to manage payments and I just noticed that you are adding additional fees.  Why?  I am a good customer and this has me thinking about leaving.,transfer_fee_charged
+I requested money from the ATM and it didn't give me as much as I requested.,wrong_amount_of_cash_received
+I'm at the ATM right now and it only allowed me to withdraw 10 pounds instead of my requested 30. What's going on? How can I fix this?,wrong_amount_of_cash_received
+The app is showing that I received alot more money than I actually received from the ATM. This occurred earlier today.,wrong_amount_of_cash_received
+I did not ask for the amount of cash that I received.,wrong_amount_of_cash_received
+What happens if the ATM gives me the wrong amount of money?,wrong_amount_of_cash_received
+"I think something went wrong, I didn't get the right amount.",wrong_amount_of_cash_received
