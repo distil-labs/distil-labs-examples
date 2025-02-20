@@ -16,7 +16,7 @@ This repository contains practical examples demonstrating various use cases of t
 
 
 ### Text classification: how to write a job description
-[This example](classification-how-to-write-job-description) demonstrates how to refine a job description for classification and then use it to train nand SLM. You can iterate over the job description until our chosen 'teacher' LLM can solve the test dataset well enough. If a large model can solve a problem, we can then distil the problem-solving ability of the larger model into a small model.
+[This example](classification-how-to-write-job-description) demonstrates how to fine-tune an accurate small language model (SLM) for text classification by refining the problem description. In the notebook, we iterate over the class descriptions until the large language (teacher) model can solve the test set and  then distil its problem-solving ability into a small model.
 
 
 ## Getting Started
@@ -46,6 +46,6 @@ To start working with this repository:
 
 We welcome contributions! Please submit a PR if you want to contribute a new example.
 
----
+## Documentation
 
-Visit [distil labs](https://distillabs.ai) to learn more about our platform.
+Visit [distil labs](https://distillabs.ai) to learn more about our platform and our [documnetation](https://api-dev.distillabs.ai/docs#/) for details on our endpoints.
