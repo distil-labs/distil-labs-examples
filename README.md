@@ -15,6 +15,10 @@ This repository contains practical examples demonstrating various use cases of t
 [This example](classification-tutorial) demonstrates how to fine-tune a small language model (SLM) for text classification and deploy it on your local machine. You can train a model that solves any of the four example tasks we provide or modify any of the examples to match your use-case. 
 
 
+### Question Answering: training and deployment for open book QA
+[This example](quesiton-answering-tutorial) demonstrates how to fine-tune a small language model (SLM) for open-book question answering. In the Open-book QA setting, the LLM can refer to external sources of information (e.g., contexts gathered by the retriever) to answer given questions. You can train and deploy a model that solves QA task we provide or modify it to match your use-case.
+
+
 ### Text classification: how to write a job description
 [This example](classification-how-to-write-job-description) demonstrates how to fine-tune an accurate small language model (SLM) for text classification by refining the problem description. In the notebook, we iterate over the class descriptions until the large language (teacher) model can solve the test set and  then distil its problem-solving ability into a small model.
 
