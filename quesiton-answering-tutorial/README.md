@@ -4,7 +4,7 @@ The **distil labs** platform allows anyone to benefit from state-of-the-art meth
 
 
 ## End-to-end workflow
-We will solve the routing task by going through the following process
+We will solve the question-answering task by going through the following process
 
 1. **Task Definition**: We begin by defining our specific task by providing a small train/test dataset and the corresponding task description.
 2. **SLM Training**: In this stage, we will validate if a large language model (LLM) can accurately solve our task, and if that is the case, we use all available data (both labelled and unlabelled) to train a specialized SLM to match the performance of the LLM.
