@@ -16,7 +16,7 @@ This repository contains practical examples demonstrating various use cases of t
 
 
 ### Question Answering: training and deployment for open book QA
-[This example](quesiton-answering-tutorial) demonstrates how to fine-tune a small language model (SLM) for open-book question answering. In the Open-book QA setting, the LLM can refer to external sources of information (e.g., contexts gathered by the retriever) to answer given questions. You can train and deploy a model that solves QA task we provide or modify it to match your use-case.
+[This example](question-answering-tutorial) demonstrates how to fine-tune a small language model (SLM) for open-book question answering. In the Open-book QA setting, the LLM can refer to external sources of information (e.g., contexts gathered by the retriever) to answer given questions. You can train and deploy a model that solves QA task we provide or modify it to match your use-case.
 
 
 ### Text classification: how to write a job description

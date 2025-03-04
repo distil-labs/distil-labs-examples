@@ -24,7 +24,7 @@ Each example dirctory outlined below contains the 4 main components of a task:
 You can modify the job description using any text editor and the datasets with any tables editor such as excel, google sheets, etc.
 
 #### [HotpotQA Dataset](data-hotpotqa/)
-This directory contains task definitions for question answering using the HotpotQA dataset. The tasks focus on developing models that can answer complex, multi-hop questions requiring reasoning across multiple documents. 
+This directory contains task definitions for question answering using the [HotpotQA dataset](https://arxiv.org/abs/1809.09600). The tasks focus on developing models that can answer complex, multi-hop questions requiring reasoning across multiple documents. 
 
 ### SLM Training
 Use the [question-answering-training.ipynb](question-answering-training.ipynb) notebook to train a small language model (SLM) with the **distil labs** platform. We will follow a three-step process and, at the end, download our own SLM for local deployment.
