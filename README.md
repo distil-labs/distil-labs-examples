@@ -52,4 +52,4 @@ We welcome contributions! Please submit a PR if you want to contribute a new exa
 
 ## Documentation
 
-Visit [distil labs](https://distillabs.ai) to learn more about our platform and our [documnetation](https://api-dev.distillabs.ai/docs#/) for details on our endpoints.
+Visit [distil labs](https://distillabs.ai) to learn more about our platform and our [documentation](https://docs.distillabs.ai) for details on our endpoints.
