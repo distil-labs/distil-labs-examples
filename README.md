@@ -20,7 +20,7 @@ This repository contains practical examples demonstrating various use cases of t
 
 
 ### Text classification: how to write a job description
-[This example](classification-how-to-write-job-description) demonstrates how to fine-tune an accurate small language model (SLM) for text classification by refining the problem description. In the notebook, we iterate over the class descriptions until the large language (teacher) model can solve the test set and  then distil its problem-solving ability into a small model.
+In [this example](rag-tutorial), start with a baseline RAG prototype for Roman‑Empire question answering, then fine‑tune an SLM with distil labs and run the entire system locally.
 
 
 ## Getting Started
