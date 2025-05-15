@@ -25,8 +25,7 @@ This repo contains a **step‑by‑step Jupyter notebook** that shows you how to
 ## One‑line demo
 
 ```bash
-python -m vllm.entrypoints.openai.api_server \
-    --model HuggingFaceTB/SmolLM2-135M-Instruct --device cpu &
+vllm serve HuggingFaceTB/SmolLM2-135M-Instruct --device cpu 
 ```
 
 Then open the notebook and run Chapter 1 to play with the baseline RAG loop.

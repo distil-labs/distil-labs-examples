@@ -1,1 +1,1 @@
-{"task_description": "Answer the question using information in the context. Questions require information from one paragraph of the context to answer. "}
+{"task_description": "Answer the question using information from one of the context paragrpahs. The answer should should contain all important information from the context paragraph but stay short, one sentence maximum."}
