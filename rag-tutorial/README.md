@@ -18,16 +18,8 @@ This repo contains a **step‑by‑step Jupyter notebook** that shows you how to
 
 ## Prerequisites
 
-* Python 3.10+
-* `pip install vllm langchain-core langchain_community langchain-openai langchain-huggingface wikipedia pandas requests rich pyyaml`
+* Python 3.10+ with `pip` available
+* Local version of ollama. To install ollama, follow the instructions in https://ollama.com/download.
 * A **distil labs** account for fine‑tuning
-
-## One‑line demo
-
-```bash
-vllm serve HuggingFaceTB/SmolLM2-135M-Instruct --device cpu 
-```
-
-Then open the notebook and run Chapter 1 to play with the baseline RAG loop.
 
 Happy hacking!
