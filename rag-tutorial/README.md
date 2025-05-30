@@ -1,5 +1,8 @@
 # RAG‑Roman‑Empire — Quick Start
 
+[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/distil-labs/distil-labs-examples/blob/main/rag-tutorial/rag-tutorial.ipynb)
+
+## Introduction
 This repo contains a **step‑by‑step Jupyter notebook** that shows you how to:
 
 1. **Spin up a baseline Retrieval‑Augmented Generation (RAG) prototype** for answering questions about the Roman Empire using a small open‑source chat model, vLLM, and a Wikipedia article as the knowledge base.
