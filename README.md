@@ -11,16 +11,16 @@ The distil labs platform is a user-friendly solution that democratises access to
 
 This repository contains practical examples demonstrating various use cases of the distil labs platform. Each example is contained in its own directory with complete code and documentation.
 
+
+### RAG: Build a local retrieval augmented generation with a fine-tuned model
+In [this example](rag-tutorial), start with a baseline RAG prototype for Roman‑Empire question answering, then fine‑tune an SLM with distil labs and run the entire system locally.
+
 ### Text classification: training and deployment
 [This example](classification-tutorial) demonstrates how to fine-tune a small language model (SLM) for text classification and deploy it on your local machine. You can train a model that solves any of the four example tasks we provide or modify any of the examples to match your use-case. 
 
 
 ### Question Answering: training and deployment for open book QA
 [This example](question-answering-tutorial) demonstrates how to fine-tune a small language model (SLM) for open-book question answering. In the Open-book QA setting, the LLM can refer to external sources of information (e.g., contexts gathered by the retriever) to answer given questions. You can train and deploy a model that solves QA task we provide or modify it to match your use-case.
-
-
-### Text classification: how to write a job description
-In [this example](rag-tutorial), start with a baseline RAG prototype for Roman‑Empire question answering, then fine‑tune an SLM with distil labs and run the entire system locally.
 
 
 ## Getting Started
