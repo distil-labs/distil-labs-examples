@@ -3,7 +3,6 @@
 
   "examples": [
     {
-      "id": 1,
       "text": "This Asset Purchase Agreement is entered into on March 15, 2024, between TechCorp Inc., a Delaware corporation (\"Buyer\"), and DataSoft LLC, a California limited liability company (\"Seller\"). The purchase price shall be $12,500,000, payable as follows: $8,000,000 at closing and $4,500,000 held in escrow for 18 months. John Martinez, in his capacity as Managing Member of DataSoft LLC, personally guarantees the representations and warranties contained herein.",
       "expected_output": {
         "parties": [
@@ -26,7 +25,6 @@
       }
     },
     {
-      "id": 11,
       "text": "The Joint Venture Agreement executed between Phoenix Industries Ltd., a UK company, and Sakura Manufacturing K.K., a Japanese corporation, on August 5, 2024, establishes NewCo Ventures LLC as the operating entity. Thomas Wright, designated as the interim CEO by Phoenix Industries, and Yuki Tanaka, appointed by Sakura Manufacturing as CFO, will serve until permanent management is selected by December 1, 2024.",
       "expected_output": {
         "parties": [
@@ -68,7 +66,6 @@
       }
     },
     {
-      "id": 12,
       "text": "Amendment No. 3 to the Credit Agreement dated May 22, 2023, extends the maturity date to September 15, 2028. First National Bank serves as administrative agent, while Citizens Trust Company acts as collateral agent. The amendment became effective on October 10, 2024, following approval by lenders holding 75% of outstanding commitments.",
       "expected_output": {
         "parties": [
@@ -99,7 +96,6 @@
       }
     },
     {
-      "id": 13,
       "text": "The Share Purchase Agreement between Northstar Holdings Inc. (purchaser) and the estate of deceased shareholder Maria Rodriguez, represented by executor Carlos Rodriguez, was signed on July 18, 2024. Atlantic Legal Services LLC is retained as the registered agent for both parties' Delaware entities. The closing is scheduled for no later than August 30, 2024.",
       "expected_output": {
         "parties": [
@@ -135,7 +131,6 @@
       }
     },
     {
-      "id": 14,
       "text": "Pursuant to the Master Service Agreement effective January 15, 2025, CloudTech Solutions Inc. will provide hosting services to multiple subsidiaries of MegaRetail Corporation. The agreement automatically renews on January 15th of each year unless terminated with 90 days notice. Lisa Park, acting in her capacity as Chief Procurement Officer of MegaRetail Corporation, has execution authority for this agreement.",
       "expected_output": {
         "parties": [
@@ -167,7 +162,6 @@
       }
     },
     {
-      "id": 15,
       "text": "The Distribution Agreement grants Europarts GmbH exclusive rights for Germany and Austria, while Nordics AB holds exclusive rights for Sweden, Norway, and Denmark. Both agreements were executed on March 3, 2024, and will expire simultaneously on March 2, 2029. The ultimate parent company, Global Distribution Holdings SA, guarantees performance under both agreements.",
       "expected_output": {
         "parties": [
@@ -199,7 +193,6 @@
       }
     },
     {
-      "id": 16,
       "text": "The Merger Agreement dated September 12, 2024, provides that AcquirerCorp will merge with TargetCorp, with TargetCorp as the surviving entity. Goldman Sachs & Co. serves as financial advisor to AcquirerCorp, while J.P. Morgan Securities LLC advises TargetCorp. The transaction is expected to close by March 31, 2025, subject to regulatory approvals.",
       "expected_output": {
         "parties": [
@@ -236,7 +229,6 @@
       }
     },
     {
-      "id": 17,
       "text": "The Trust Agreement established on April 8, 2024, names Jennifer Thompson as trustee of the Thompson Family Trust, with Michael Thompson and Sarah Thompson as co-beneficiaries. Bank of America, N.A. serves as successor trustee in the event Jennifer Thompson is unable to serve. The trust term expires on April 7, 2044, or upon the death of the last surviving beneficiary, whichever occurs first.",
       "expected_output": {
         "parties": [
@@ -275,7 +267,6 @@
       }
     },
     {
-      "id": 18,
       "text": "The Supply Agreement effective November 1, 2024, between Manufacturer Inc. and Retailer Corp. includes a most-favored-nation clause. Under the agreement, Steel Components LLC, a wholly-owned subsidiary of Manufacturer Inc., will fulfill all orders. The initial term runs through October 31, 2027, with automatic renewal unless either party provides notice by July 31, 2027.",
       "expected_output": {
         "parties": [
@@ -310,7 +301,6 @@
       }
     },
     {
-      "id": 19,
       "text": "The Partnership Agreement dated June 14, 2024, establishes TechVentures LP with Innovation Capital as the general partner and Pension Fund Alpha, University Endowment Beta, and Family Office Gamma as limited partners. The partnership has a 10-year term ending June 13, 2034, with two optional one-year extensions. CT Corporation serves as the registered agent in Delaware.",
       "expected_output": {
         "parties": [
@@ -354,7 +344,6 @@
       }
     },
     {
-      "id": 20,
       "text": "The Stockholders Agreement executed on December 20, 2024, governs the relationship between majority shareholder Tech Innovators Inc. (65% ownership) and minority shareholders including Venture Fund XYZ (20% ownership) and employee option holders (15% ownership). Delaware Corporation Service Company acts as registered agent. The agreement includes a sunset provision expiring on December 19, 2034, unless the company achieves an IPO or sale before that date.",
       "expected_output": {
         "parties": [
@@ -396,7 +385,6 @@
       }
     },
     {
-      "id": 2,
       "text": "Pursuant to Section 4.2 of the Investment Agreement dated January 10, 2024, Venture Capital Partners LP shall have the right to appoint two (2) members to the Board of Directors so long as it maintains ownership of at least 15% of the outstanding shares. Sarah Chen, as General Partner of Venture Capital Partners LP, is hereby designated as the initial board appointee. The anti-dilution provisions set forth in Exhibit C shall apply to any future equity issuances.",
       "expected_output": {
         "parties": [
@@ -421,7 +409,6 @@
       }
     },
     {
-      "id": 3,
       "text": "The earnout provision requires additional payments of up to $5,000,000 based on achievement of revenue milestones: $2,000,000 if annual revenue exceeds $15,000,000 by December 31, 2025, and an additional $3,000,000 if annual revenue exceeds $25,000,000 by December 31, 2026. Failure to achieve the first milestone will result in forfeiture of rights to the second milestone payment.",
       "expected_output": {
         "dates": [
@@ -439,7 +426,6 @@
       }
     },
     {
-      "id": 4,
       "text": "BlackStone Investments LLC, acting through its wholly-owned subsidiary BlackStone Capital Management Inc., hereby agrees to the following terms. The beneficial owner of BlackStone Investments LLC is disclosed as Robert Kim (45% interest) and the Kim Family Trust (55% interest), with Kim Family Trust being managed by Jennifer Kim as trustee. This agreement shall terminate automatically on June 30, 2027, unless extended by mutual written consent.",
       "expected_output": {
         "parties": [
@@ -478,7 +464,6 @@
       }
     },
     {
-      "id": 5,
       "text": "In the event of material breach, the non-breaching party may terminate this agreement upon thirty (30) days written notice. Liquidated damages shall be $500,000 for termination due to buyer's breach, or $250,000 for termination due to seller's breach. Global Industries Corp. has provided a corporate guarantee for all obligations of its subsidiary, Regional Manufacturing LLC.",
       "expected_output": {
         "parties": [
@@ -495,7 +480,6 @@
       }
     },
     {
-      "id": 6,
       "text": "The Management Services Agreement effective April 1, 2024, grants Omega Consulting Group exclusive management rights for a period of five (5) years, with automatic renewal for successive two-year terms unless either party provides 180 days written notice. Monthly management fees of $75,000 are payable in advance on the first business day of each month, subject to annual increases of 3%.",
       "expected_output": {
         "parties": [
@@ -514,7 +498,6 @@
       }
     },
     {
-      "id": 7,
       "text": "Pursuant to the Shareholders Agreement, MegaCorp Inc. retains a right of first refusal on any proposed transfer of shares by minority shareholders. Additionally, MegaCorp Inc. holds drag-along rights allowing it to force minority shareholders to participate in any sale of the company, provided the purchase price exceeds $100,000,000. The registered agent for service of process is CT Corporation System, located at 1 State Street, New York, NY 10004.",
       "expected_output": {
         "parties": [
@@ -531,7 +514,6 @@
       }
     },
     {
-      "id": 8,
       "text": "The Preferred Stock Purchase Agreement dated February 28, 2024, includes a 1.5x liquidation preference for Series A Preferred shareholders, with participation rights capped at 3x the original investment. In addition, Series A holders have blocking rights over any transaction involving the sale of substantially all company assets or any merger where existing shareholders would own less than 50% of the surviving entity.",
       "expected_output": {
         "dates": [
@@ -544,7 +526,6 @@
       }
     },
     {
-      "id": 9,
       "text": "Effective January 1, 2025, the License Agreement grants EuroTech GmbH exclusive distribution rights for the European Economic Area for an initial term of seven (7) years. Minimum annual royalties of €2,500,000 are required, calculated at 8% of net sales, with quarterly reporting due within 45 days of quarter end. Failure to meet minimum royalties in any two consecutive years constitutes grounds for termination.",
       "expected_output": {
         "parties": [
@@ -563,7 +544,6 @@
       }
     },
     {
-      "id": 10,
       "text": "The Employment Agreement executed on November 12, 2024, provides for an annual base salary of $350,000, with eligibility for discretionary bonus up to 75% of base salary based on individual and company performance metrics. Upon termination without cause, the executive is entitled to 12 months base salary continuation and COBRA premium payments for 18 months. Marcus Johnson, as Chairman of the Compensation Committee, has approved these terms in accordance with the company's executive compensation policy.",
       "expected_output": {
         "parties": [
