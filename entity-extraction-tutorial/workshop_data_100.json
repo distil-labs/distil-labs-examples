@@ -1,5 +1,5 @@
 {
-  "task_description": "You are an expert legal document analyzer. Extract all parties and dates from legal contracts and corporate documents and output them in JSON format.\n\nFor each party identified, provide:\n- The exact name as it appears in the document\n- Their role or function in the agreement (such as licensor, buyer, consultant, settlement agent)\n- Their entity type or corporate structure when specified (such as corporation type, LLC designation, or individual titles)\n\nFor each date identified, provide:\n- The specific date\n- The type or purpose of that date (such as agreement execution, service commencement, termination, closing, or other milestone dates)\n\nInclude all entities mentioned in the document, even those in supporting or administrative roles. Capture all significant dates that establish timelines, deadlines, or key events in the agreement.\n\nReturn your response as valid JSON with the following structure:\n{\n  \"parties\": [\n    {\n      \"name\": \"exact name from document\",\n      \"role\": \"function in agreement\",\n      \"entity_type\": \"corporate structure if specified\"\n    }\n  ],\n  \"dates\": [\n    {\n      \"date\": \"specific date\",\n      \"type\": \"purpose of date\"\n    }\n  ]\n}\n\nFocus on accuracy and completeness in your extraction.",
+  "task_description": "Extract parties and dates from legal documents as JSON.\n\nFor parties, extract: name (exact text from document), role (Licensor, Licensee, Buyer, Seller, Client, Advisor, Agent, Manager, Authorized Signatory), entity_type (\"organization\" or \"individual\").\n\nFor dates, extract: date (in format \"Month DD, YYYY\"), type (agreement_date, effective_date, expiration_date, closing_date).\n\nReturn JSON format:\n{\n  \"parties\": [{\"name\": \"...\", \"role\": \"...\", \"entity_type\": \"...\"}],\n  \"dates\": [{\"date\": \"...\", \"type\": \"...\"}]\n}",
   "examples": [
     {
       "text": "The Software License Agreement dated May 15, 2024, between CodeCorp Systems Ltd., a Canadian corporation (\"Licensor\"), and Digital Innovations LLC, a Texas limited liability company (\"Licensee\"), establishes licensing terms for proprietary software. The agreement becomes effective immediately upon execution and remains in force until May 14, 2029. Robert Chen, acting as Chief Technology Officer of Digital Innovations LLC, has authorized this agreement on behalf of the company.",
@@ -57,11 +57,11 @@
             "date": "August 22, 2024"
           },
           {
-            "type": "service_commencement_date",
+            "type": "effective_date",
             "date": "September 1, 2024"
           },
           {
-            "type": "service_termination_date",
+            "type": "expiration_date",
             "date": "August 31, 2026"
           }
         ]
@@ -92,7 +92,7 @@
         ],
         "dates": [
           {
-            "type": "execution_date",
+            "type": "agreement_date",
             "date": "October 10, 2024"
           },
           {
@@ -122,19 +122,19 @@
         ],
         "dates": [
           {
-            "type": "original_loan_date",
+            "type": "agreement_date",
             "date": "March 18, 2023"
           },
           {
-            "type": "original_maturity_date",
+            "type": "expiration_date",
             "date": "March 17, 2028"
           },
           {
-            "type": "extended_maturity_date",
+            "type": "expiration_date",
             "date": "March 17, 2030"
           },
           {
-            "type": "amendment_effective_date",
+            "type": "effective_date",
             "date": "November 1, 2024"
           }
         ]
@@ -157,11 +157,11 @@
         ],
         "dates": [
           {
-            "type": "franchise_agreement_date",
+            "type": "agreement_date",
             "date": "July 5, 2024"
           },
           {
-            "type": "franchise_expiration_date",
+            "type": "expiration_date",
             "date": "July 4, 2039",
             "renewal_options": "two additional 5-year terms"
           }
@@ -184,19 +184,19 @@
         ],
         "dates": [
           {
-            "type": "assignment_date",
+            "type": "agreement_date",
             "date": "September 30, 2024"
           },
           {
-            "type": "patent_filing_date",
+            "type": "milestone_date",
             "date": "June 12, 2024"
           },
           {
-            "type": "payment_installment_date",
+            "type": "payment_date",
             "date": "March 31, 2025"
           },
           {
-            "type": "payment_installment_date",
+            "type": "payment_date",
             "date": "September 30, 2025"
           }
         ]
@@ -221,11 +221,11 @@
         ],
         "dates": [
           {
-            "type": "lease_effective_date",
+            "type": "effective_date",
             "date": "January 1, 2025"
           },
           {
-            "type": "lease_expiration_date",
+            "type": "expiration_date",
             "date": "December 31, 2029"
           }
         ]
@@ -256,11 +256,11 @@
         ],
         "dates": [
           {
-            "type": "execution_date",
+            "type": "agreement_date",
             "date": "June 8, 2024"
           },
           {
-            "type": "confidentiality_expiration_date",
+            "type": "expiration_date",
             "date": "June 7, 2029"
           }
         ]
@@ -285,15 +285,15 @@
             "date": "April 18, 2024"
           },
           {
-            "type": "service_commencement_date",
+            "type": "effective_date",
             "date": "May 1, 2024"
           },
           {
-            "type": "service_expiration_date",
+            "type": "expiration_date",
             "date": "April 30, 2027"
           },
           {
-            "type": "annual_review_date",
+            "type": "review_date",
             "date": "May 1st",
             "recurring": true
           }
@@ -330,7 +330,7 @@
             "date": "November 25, 2024"
           },
           {
-            "type": "expected_closing_date",
+            "type": "closing_date",
             "date": "February 28, 2025",
             "condition": "subject to regulatory approvals and customary closing conditions"
           }
@@ -358,15 +358,15 @@
         ],
         "dates": [
           {
-            "type": "execution_date",
+            "type": "agreement_date",
             "date": "February 14, 2024"
           },
           {
-            "type": "agreement_expiration_date",
+            "type": "agreement_date",
             "date": "February 13, 2036"
           },
           {
-            "type": "milestone_payment_deadline",
+            "type": "deadline",
             "date": "December 31, 2027"
           }
         ]
@@ -405,7 +405,7 @@
             "date": "September 30, 2024"
           },
           {
-            "type": "warranty_expiration_date",
+            "type": "expiration_date",
             "date": "September 29, 2026"
           }
         ]
@@ -435,11 +435,11 @@
         ],
         "dates": [
           {
-            "type": "contract_date",
+            "type": "agreement_date",
             "date": "June 20, 2024"
           },
           {
-            "type": "substantial_completion_deadline",
+            "type": "deadline",
             "date": "March 15, 2026"
           }
         ]
@@ -472,7 +472,7 @@
             "date": "October 8, 2024"
           },
           {
-            "type": "due_diligence_deadline",
+            "type": "deadline",
             "date": "November 30, 2024"
           }
         ]
@@ -501,11 +501,11 @@
         ],
         "dates": [
           {
-            "type": "credit_facility_effective_date",
+            "type": "effective_date",
             "date": "December 1, 2024"
           },
           {
-            "type": "facility_maturity_date",
+            "type": "expiration_date",
             "date": "November 30, 2027"
           }
         ]
@@ -528,15 +528,15 @@
         ],
         "dates": [
           {
-            "type": "licensing_agreement_date",
+            "type": "agreement_date",
             "date": "September 5, 2024"
           },
           {
-            "type": "licensing_expiration_date",
+            "type": "expiration_date",
             "date": "September 4, 2032"
           },
           {
-            "type": "annual_sales_commitment_deadline",
+            "type": "deadline",
             "date": "December 31st",
             "recurring": true,
             "first_occurrence": "December 31, 2025"
@@ -568,11 +568,11 @@
         ],
         "dates": [
           {
-            "type": "voting_agreement_date",
+            "type": "agreement_date",
             "date": "March 12, 2024"
           },
           {
-            "type": "agreement_expiration_date",
+            "type": "agreement_date",
             "date": "March 11, 2025",
             "condition": "or completion of merger, whichever is earlier"
           }
@@ -602,11 +602,11 @@
         ],
         "dates": [
           {
-            "type": "escrow_agreement_date",
+            "type": "agreement_date",
             "date": "January 18, 2025"
           },
           {
-            "type": "escrow_termination_date",
+            "type": "expiration_date",
             "date": "July 17, 2026"
           }
         ]
@@ -631,11 +631,11 @@
         ],
         "dates": [
           {
-            "type": "indemnification_agreement_date",
+            "type": "agreement_date",
             "date": "November 8, 2024"
           },
           {
-            "type": "indemnification_expiration_date",
+            "type": "expiration_date",
             "date": "November 7, 2031"
           }
         ]
@@ -660,11 +660,11 @@
         ],
         "dates": [
           {
-            "type": "warrant_agreement_date",
+            "type": "agreement_date",
             "date": "April 25, 2024"
           },
           {
-            "type": "warrant_expiration_date",
+            "type": "expiration_date",
             "date": "April 24, 2029"
           }
         ]
@@ -691,15 +691,15 @@
         ],
         "dates": [
           {
-            "type": "employment_agreement_date",
+            "type": "agreement_date",
             "date": "March 7, 2024"
           },
           {
-            "type": "employment_commencement_date",
+            "type": "effective_date",
             "date": "April 1, 2024"
           },
           {
-            "type": "non_compete_expiration_date",
+            "type": "expiration_date",
             "date": "April 1, 2027"
           }
         ]
@@ -724,15 +724,15 @@
         ],
         "dates": [
           {
-            "type": "partnership_agreement_date",
+            "type": "agreement_date",
             "date": "May 22, 2024"
           },
           {
-            "type": "partnership_expiration_date",
+            "type": "expiration_date",
             "date": "May 21, 2044"
           },
           {
-            "type": "capital_contribution_deadline",
+            "type": "deadline",
             "date": "June 30, 2024"
           }
         ]
@@ -758,15 +758,15 @@
         ],
         "dates": [
           {
-            "type": "distribution_agreement_date",
+            "type": "agreement_date",
             "date": "August 14, 2024"
           },
           {
-            "type": "distribution_commencement_date",
+            "type": "effective_date",
             "date": "September 1, 2024"
           },
           {
-            "type": "distribution_expiration_date",
+            "type": "expiration_date",
             "date": "August 31, 2029"
           }
         ]
@@ -795,19 +795,19 @@
         ],
         "dates": [
           {
-            "type": "joint_venture_agreement_date",
+            "type": "agreement_date",
             "date": "October 30, 2024"
           },
           {
-            "type": "joint_venture_expiration_date",
+            "type": "expiration_date",
             "date": "October 29, 2034"
           },
           {
-            "type": "phase_1_trial_deadline",
+            "type": "deadline",
             "date": "January 15, 2026"
           },
           {
-            "type": "phase_2_trial_deadline",
+            "type": "deadline",
             "date": "July 15, 2027"
           }
         ]
@@ -836,11 +836,11 @@
         ],
         "dates": [
           {
-            "type": "security_agreement_date",
+            "type": "agreement_date",
             "date": "January 25, 2024"
           },
           {
-            "type": "credit_line_maturity_date",
+            "type": "expiration_date",
             "date": "January 24, 2027"
           }
         ]
@@ -869,15 +869,15 @@
         ],
         "dates": [
           {
-            "type": "sublease_agreement_date",
+            "type": "agreement_date",
             "date": "September 18, 2024"
           },
           {
-            "type": "sublease_commencement_date",
+            "type": "effective_date",
             "date": "October 1, 2024"
           },
           {
-            "type": "sublease_expiration_date",
+            "type": "expiration_date",
             "date": "September 30, 2026"
           }
         ]
@@ -902,15 +902,15 @@
         ],
         "dates": [
           {
-            "type": "merger_agreement_date",
+            "type": "agreement_date",
             "date": "December 12, 2024"
           },
           {
-            "type": "anticipated_merger_effective_date",
+            "type": "effective_date",
             "date": "February 15, 2025"
           },
           {
-            "type": "shareholder_meeting_date",
+            "type": "review_date",
             "date": "January 20, 2025"
           }
         ]
@@ -939,11 +939,11 @@
         ],
         "dates": [
           {
-            "type": "management_agreement_date",
+            "type": "agreement_date",
             "date": "July 11, 2024"
           },
           {
-            "type": "management_term_expiration_date",
+            "type": "expiration_date",
             "date": "January 10, 2026"
           }
         ]
@@ -977,11 +977,11 @@
         ],
         "dates": [
           {
-            "type": "asset_purchase_agreement_date",
+            "type": "agreement_date",
             "date": "April 3, 2024"
           },
           {
-            "type": "due_diligence_deadline",
+            "type": "deadline",
             "date": "April 20, 2024"
           },
           {
@@ -1014,19 +1014,19 @@
         ],
         "dates": [
           {
-            "type": "trust_establishment_date",
+            "type": "effective_date",
             "date": "November 15, 2024"
           },
           {
-            "type": "trust_termination_date",
+            "type": "expiration_date",
             "date": "November 14, 2049"
           },
           {
-            "type": "first_distribution_date",
+            "type": "payment_date",
             "date": "January 1, 2025"
           },
           {
-            "type": "annual_distribution_date",
+            "type": "payment_date",
             "date": "December 31st",
             "recurring": true
           }
@@ -1056,15 +1056,15 @@
         ],
         "dates": [
           {
-            "type": "supply_agreement_date",
+            "type": "agreement_date",
             "date": "February 28, 2024"
           },
           {
-            "type": "supply_agreement_expiration_date",
+            "type": "agreement_date",
             "date": "February 27, 2031"
           },
           {
-            "type": "annual_purchase_commitment_deadline",
+            "type": "deadline",
             "date": "December 31st",
             "recurring": true,
             "first_occurrence": "December 31, 2024"
@@ -1092,15 +1092,15 @@
         ],
         "dates": [
           {
-            "type": "option_agreement_date",
+            "type": "agreement_date",
             "date": "June 13, 2024"
           },
           {
-            "type": "option_expiration_date",
+            "type": "expiration_date",
             "date": "June 12, 2026"
           },
           {
-            "type": "environmental_assessment_deadline",
+            "type": "deadline",
             "date": "September 13, 2024"
           }
         ]
@@ -1125,11 +1125,11 @@
         ],
         "dates": [
           {
-            "type": "letter_of_credit_issue_date",
+            "type": "milestone_date",
             "date": "August 5, 2024"
           },
           {
-            "type": "letter_of_credit_expiration_date",
+            "type": "expiration_date",
             "date": "August 4, 2025"
           }
         ]
@@ -1158,11 +1158,11 @@
         ],
         "dates": [
           {
-            "type": "licensing_agreement_date",
+            "type": "agreement_date",
             "date": "December 3, 2024"
           },
           {
-            "type": "first_royalty_payment_date",
+            "type": "payment_date",
             "date": "March 31, 2025"
           }
         ]
@@ -1191,11 +1191,11 @@
         ],
         "dates": [
           {
-            "type": "guarantee_agreement_date",
+            "type": "agreement_date",
             "date": "January 30, 2024"
           },
           {
-            "type": "loan_maturity_date",
+            "type": "expiration_date",
             "date": "January 29, 2029"
           }
         ]
@@ -1220,15 +1220,15 @@
         ],
         "dates": [
           {
-            "type": "professional_services_agreement_date",
+            "type": "agreement_date",
             "date": "March 28, 2024"
           },
           {
-            "type": "retainer_expiration_date",
+            "type": "expiration_date",
             "date": "March 27, 2027"
           },
           {
-            "type": "annual_rate_review_date",
+            "type": "review_date",
             "date": "March 28th",
             "recurring": true
           }
@@ -1261,11 +1261,11 @@
         ],
         "dates": [
           {
-            "type": "shareholders_agreement_date",
+            "type": "agreement_date",
             "date": "May 9, 2024"
           },
           {
-            "type": "annual_valuation_effective_date",
+            "type": "effective_date",
             "date": "January 1st",
             "recurring": true
           }
@@ -1292,19 +1292,19 @@
         ],
         "dates": [
           {
-            "type": "lease_assignment_date",
+            "type": "agreement_date",
             "date": "July 17, 2024"
           },
           {
-            "type": "assignment_effective_date",
+            "type": "effective_date",
             "date": "August 1, 2024"
           },
           {
-            "type": "lease_expiration_date",
+            "type": "expiration_date",
             "date": "July 31, 2028"
           },
           {
-            "type": "landlord_consent_date",
+            "type": "milestone_date",
             "date": "July 10, 2024"
           }
         ]
@@ -1340,11 +1340,11 @@
         ],
         "dates": [
           {
-            "type": "cross_purchase_agreement_date",
+            "type": "agreement_date",
             "date": "November 18, 2024"
           },
           {
-            "type": "annual_appraisal_date",
+            "type": "review_date",
             "date": "December 31st",
             "recurring": true
           }
@@ -1374,15 +1374,15 @@
         ],
         "dates": [
           {
-            "type": "transition_services_agreement_date",
+            "type": "agreement_date",
             "date": "September 25, 2024"
           },
           {
-            "type": "asset_sale_closing_date",
+            "type": "closing_date",
             "date": "October 15, 2024"
           },
           {
-            "type": "service_termination_date",
+            "type": "expiration_date",
             "date": "October 14, 2025"
           }
         ]
@@ -1412,15 +1412,15 @@
         ],
         "dates": [
           {
-            "type": "insurance_agreement_date",
+            "type": "agreement_date",
             "date": "January 12, 2025"
           },
           {
-            "type": "policy_effective_date",
+            "type": "effective_date",
             "date": "February 1, 2025"
           },
           {
-            "type": "policy_expiration_date",
+            "type": "expiration_date",
             "date": "January 31, 2026"
           }
         ]
@@ -1450,11 +1450,11 @@
             "date": "March 15, 2025"
           },
           {
-            "type": "employment_start_date",
+            "type": "effective_date",
             "date": "April 1, 2025"
           },
           {
-            "type": "annual_acknowledgment_date",
+            "type": "review_date",
             "date": "January 15th",
             "recurring": true
           }
@@ -1481,11 +1481,11 @@
         ],
         "dates": [
           {
-            "type": "factoring_agreement_date",
+            "type": "agreement_date",
             "date": "February 20, 2025"
           },
           {
-            "type": "facility_expiration_date",
+            "type": "expiration_date",
             "date": "February 19, 2027"
           }
         ]
@@ -1510,15 +1510,15 @@
         ],
         "dates": [
           {
-            "type": "trademark_license_date",
+            "type": "agreement_date",
             "date": "April 8, 2025"
           },
           {
-            "type": "license_commencement_date",
+            "type": "effective_date",
             "date": "May 1, 2025"
           },
           {
-            "type": "license_expiration_date",
+            "type": "expiration_date",
             "date": "April 30, 2030"
           }
         ]
@@ -1551,15 +1551,15 @@
         ],
         "dates": [
           {
-            "type": "warehouse_agreement_date",
+            "type": "agreement_date",
             "date": "May 14, 2025"
           },
           {
-            "type": "storage_commencement_date",
+            "type": "effective_date",
             "date": "June 1, 2025"
           },
           {
-            "type": "storage_expiration_date",
+            "type": "expiration_date",
             "date": "May 31, 2028"
           }
         ]
@@ -1589,23 +1589,23 @@
         ],
         "dates": [
           {
-            "type": "research_agreement_date",
+            "type": "agreement_date",
             "date": "June 9, 2025"
           },
           {
-            "type": "research_commencement_date",
+            "type": "effective_date",
             "date": "July 1, 2025"
           },
           {
-            "type": "research_completion_date",
+            "type": "deadline",
             "date": "June 30, 2029"
           },
           {
-            "type": "preclinical_studies_deadline",
+            "type": "deadline",
             "date": "December 31, 2026"
           },
           {
-            "type": "phase_1_trial_initiation_date",
+            "type": "effective_date",
             "date": "June 30, 2027"
           }
         ]
@@ -1634,19 +1634,19 @@
         ],
         "dates": [
           {
-            "type": "maintenance_agreement_date",
+            "type": "agreement_date",
             "date": "July 23, 2025"
           },
           {
-            "type": "service_effective_date",
+            "type": "effective_date",
             "date": "August 1, 2025"
           },
           {
-            "type": "service_expiration_date",
+            "type": "expiration_date",
             "date": "July 31, 2030"
           },
           {
-            "type": "annual_inspection_date",
+            "type": "review_date",
             "date": "August 15th",
             "recurring": true
           }
@@ -1677,15 +1677,15 @@
         ],
         "dates": [
           {
-            "type": "media_rights_agreement_date",
+            "type": "agreement_date",
             "date": "August 16, 2025"
           },
           {
-            "type": "rights_period_start_date",
+            "type": "effective_date",
             "date": "September 1, 2025"
           },
           {
-            "type": "rights_period_end_date",
+            "type": "expiration_date",
             "date": "August 31, 2035"
           }
         ]
@@ -1718,15 +1718,15 @@
         ],
         "dates": [
           {
-            "type": "export_financing_agreement_date",
+            "type": "agreement_date",
             "date": "September 11, 2025"
           },
           {
-            "type": "financing_maturity_date",
+            "type": "expiration_date",
             "date": "September 10, 2032"
           },
           {
-            "type": "first_principal_payment_date",
+            "type": "payment_date",
             "date": "March 11, 2026"
           }
         ]
@@ -1756,15 +1756,15 @@
         ],
         "dates": [
           {
-            "type": "data_processing_agreement_date",
+            "type": "agreement_date",
             "date": "October 7, 2025"
           },
           {
-            "type": "processing_effective_date",
+            "type": "effective_date",
             "date": "November 1, 2025"
           },
           {
-            "type": "processing_expiration_date",
+            "type": "expiration_date",
             "date": "October 31, 2031"
           }
         ]
@@ -1794,23 +1794,23 @@
         ],
         "dates": [
           {
-            "type": "software_development_agreement_date",
+            "type": "agreement_date",
             "date": "November 22, 2025"
           },
           {
-            "type": "development_commencement_date",
+            "type": "effective_date",
             "date": "December 1, 2025"
           },
           {
-            "type": "development_completion_date",
+            "type": "deadline",
             "date": "May 31, 2027"
           },
           {
-            "type": "architecture_delivery_milestone",
+            "type": "deadline",
             "date": "February 28, 2026"
           },
           {
-            "type": "beta_testing_completion_milestone",
+            "type": "deadline",
             "date": "October 31, 2026"
           }
         ]
@@ -1839,15 +1839,15 @@
         ],
         "dates": [
           {
-            "type": "power_purchase_agreement_date",
+            "type": "agreement_date",
             "date": "December 5, 2025"
           },
           {
-            "type": "power_delivery_commencement_date",
+            "type": "effective_date",
             "date": "January 15, 2026"
           },
           {
-            "type": "power_delivery_expiration_date",
+            "type": "expiration_date",
             "date": "January 14, 2051"
           }
         ]
@@ -1888,11 +1888,11 @@
         ],
         "dates": [
           {
-            "type": "acquisition_financing_agreement_date",
+            "type": "agreement_date",
             "date": "January 8, 2026"
           },
           {
-            "type": "financing_commitment_expiration_date",
+            "type": "expiration_date",
             "date": "March 31, 2026"
           }
         ]
@@ -1926,23 +1926,23 @@
         ],
         "dates": [
           {
-            "type": "clinical_trial_agreement_date",
+            "type": "agreement_date",
             "date": "February 16, 2026"
           },
           {
-            "type": "trial_commencement_date",
+            "type": "effective_date",
             "date": "March 1, 2026"
           },
           {
-            "type": "trial_completion_date",
+            "type": "deadline",
             "date": "February 28, 2029"
           },
           {
-            "type": "enrollment_start_deadline",
+            "type": "effective_date",
             "date": "June 1, 2026"
           },
           {
-            "type": "data_collection_deadline",
+            "type": "deadline",
             "date": "December 31, 2028"
           }
         ]
@@ -1975,15 +1975,15 @@
         ],
         "dates": [
           {
-            "type": "transportation_agreement_date",
+            "type": "agreement_date",
             "date": "March 11, 2026"
           },
           {
-            "type": "service_effective_date",
+            "type": "effective_date",
             "date": "April 1, 2026"
           },
           {
-            "type": "service_expiration_date",
+            "type": "expiration_date",
             "date": "March 31, 2030"
           }
         ]
@@ -2016,11 +2016,11 @@
         ],
         "dates": [
           {
-            "type": "hedging_agreement_date",
+            "type": "agreement_date",
             "date": "April 7, 2026"
           },
           {
-            "type": "contract_expiration_date",
+            "type": "agreement_date",
             "date": "October 31, 2028"
           }
         ]
@@ -2050,19 +2050,19 @@
         ],
         "dates": [
           {
-            "type": "telecommunications_agreement_date",
+            "type": "agreement_date",
             "date": "May 19, 2026"
           },
           {
-            "type": "service_commencement_date",
+            "type": "effective_date",
             "date": "June 1, 2026"
           },
           {
-            "type": "service_expiration_date",
+            "type": "expiration_date",
             "date": "May 31, 2033"
           },
           {
-            "type": "annual_service_review_date",
+            "type": "review_date",
             "date": "June 1st",
             "recurring": true
           }
@@ -2092,27 +2092,27 @@
         ],
         "dates": [
           {
-            "type": "publishing_agreement_date",
+            "type": "agreement_date",
             "date": "June 14, 2026"
           },
           {
-            "type": "publication_period_start_date",
+            "type": "effective_date",
             "date": "July 1, 2026"
           },
           {
-            "type": "publication_period_end_date",
+            "type": "expiration_date",
             "date": "June 30, 2031"
           },
           {
-            "type": "manuscript_delivery_date",
+            "type": "deadline",
             "date": "September 30, 2026"
           },
           {
-            "type": "manuscript_delivery_date",
+            "type": "deadline",
             "date": "March 31, 2027"
           },
           {
-            "type": "manuscript_delivery_date",
+            "type": "deadline",
             "date": "September 30, 2027"
           }
         ]
@@ -2142,19 +2142,19 @@
         ],
         "dates": [
           {
-            "type": "asset_management_agreement_date",
+            "type": "agreement_date",
             "date": "July 28, 2026"
           },
           {
-            "type": "management_commencement_date",
+            "type": "effective_date",
             "date": "August 1, 2026"
           },
           {
-            "type": "management_expiration_date",
+            "type": "expiration_date",
             "date": "July 31, 2036"
           },
           {
-            "type": "investment_committee_meeting_date",
+            "type": "review_date",
             "date": "15th of March, June, September, and December",
             "recurring": true
           }
@@ -2188,15 +2188,15 @@
         ],
         "dates": [
           {
-            "type": "rec_purchase_agreement_date",
+            "type": "agreement_date",
             "date": "August 12, 2026"
           },
           {
-            "type": "purchase_term_start_date",
+            "type": "effective_date",
             "date": "September 1, 2026"
           },
           {
-            "type": "purchase_term_end_date",
+            "type": "expiration_date",
             "date": "August 31, 2041"
           }
         ]
@@ -2231,15 +2231,15 @@
         ],
         "dates": [
           {
-            "type": "arbitration_agreement_date",
+            "type": "agreement_date",
             "date": "January 14, 2027"
           },
           {
-            "type": "hearing_commencement_date",
+            "type": "effective_date",
             "date": "March 15, 2027"
           },
           {
-            "type": "award_deadline",
+            "type": "deadline",
             "date": "September 11, 2027"
           }
         ]
@@ -2273,19 +2273,19 @@
         ],
         "dates": [
           {
-            "type": "settlement_agreement_date",
+            "type": "agreement_date",
             "date": "February 9, 2027"
           },
           {
-            "type": "first_payment_date",
+            "type": "payment_date",
             "date": "April 1, 2027"
           },
           {
-            "type": "final_payment_date",
+            "type": "payment_date",
             "date": "April 1, 2029"
           },
           {
-            "type": "court_approval_deadline",
+            "type": "deadline",
             "date": "March 30, 2027"
           }
         ]
@@ -2318,19 +2318,19 @@
         ],
         "dates": [
           {
-            "type": "mineral_lease_date",
+            "type": "agreement_date",
             "date": "March 23, 2027"
           },
           {
-            "type": "lease_effective_date",
+            "type": "effective_date",
             "date": "May 1, 2027"
           },
           {
-            "type": "lease_expiration_date",
+            "type": "expiration_date",
             "date": "April 30, 2047"
           },
           {
-            "type": "geological_survey_deadline",
+            "type": "deadline",
             "date": "August 15, 2027"
           }
         ]
@@ -2368,23 +2368,23 @@
         ],
         "dates": [
           {
-            "type": "film_production_agreement_date",
+            "type": "agreement_date",
             "date": "April 18, 2027"
           },
           {
-            "type": "production_commencement_date",
+            "type": "effective_date",
             "date": "June 1, 2027"
           },
           {
-            "type": "production_completion_date",
+            "type": "deadline",
             "date": "July 31, 2028"
           },
           {
-            "type": "principal_photography_wrap_date",
+            "type": "expiration_date",
             "date": "December 15, 2027"
           },
           {
-            "type": "post_production_delivery_date",
+            "type": "deadline",
             "date": "June 30, 2028"
           }
         ]
@@ -2413,19 +2413,19 @@
         ],
         "dates": [
           {
-            "type": "collective_bargaining_ratification_date",
+            "type": "agreement_date",
             "date": "May 13, 2027"
           },
           {
-            "type": "contract_effective_date",
+            "type": "agreement_date",
             "date": "July 1, 2027"
           },
           {
-            "type": "contract_expiration_date",
+            "type": "agreement_date",
             "date": "June 30, 2031"
           },
           {
-            "type": "renegotiation_commencement_date",
+            "type": "effective_date",
             "date": "January 1, 2031"
           }
         ]
@@ -2454,19 +2454,19 @@
         ],
         "dates": [
           {
-            "type": "contract_award_date",
+            "type": "agreement_date",
             "date": "June 7, 2027"
           },
           {
-            "type": "performance_period_start_date",
+            "type": "effective_date",
             "date": "August 1, 2027"
           },
           {
-            "type": "performance_period_end_date",
+            "type": "expiration_date",
             "date": "July 31, 2032"
           },
           {
-            "type": "quarterly_review_start_date",
+            "type": "effective_date",
             "date": "November 1, 2027"
           }
         ]
@@ -2495,23 +2495,23 @@
         ],
         "dates": [
           {
-            "type": "charitable_giving_agreement_date",
+            "type": "agreement_date",
             "date": "July 21, 2027"
           },
           {
-            "type": "first_installment_date",
+            "type": "payment_date",
             "date": "September 1, 2027"
           },
           {
-            "type": "final_installment_date",
+            "type": "payment_date",
             "date": "September 1, 2031"
           },
           {
-            "type": "program_launch_deadline",
+            "type": "effective_date",
             "date": "January 15, 2028"
           },
           {
-            "type": "annual_progress_review_date",
+            "type": "review_date",
             "date": "December 1st",
             "recurring": true
           }
@@ -2546,19 +2546,19 @@
         ],
         "dates": [
           {
-            "type": "trade_agreement_date",
+            "type": "agreement_date",
             "date": "August 16, 2027"
           },
           {
-            "type": "trade_relationship_effective_date",
+            "type": "effective_date",
             "date": "October 1, 2027"
           },
           {
-            "type": "trade_relationship_expiration_date",
+            "type": "expiration_date",
             "date": "September 30, 2035"
           },
           {
-            "type": "annual_hedging_review_date",
+            "type": "review_date",
             "date": "October 1st",
             "recurring": true
           }
@@ -2585,27 +2585,27 @@
         ],
         "dates": [
           {
-            "type": "pharmaceutical_licensing_date",
+            "type": "agreement_date",
             "date": "September 12, 2027"
           },
           {
-            "type": "licensing_commencement_date",
+            "type": "effective_date",
             "date": "November 1, 2027"
           },
           {
-            "type": "licensing_expiration_date",
+            "type": "expiration_date",
             "date": "October 31, 2039"
           },
           {
-            "type": "fda_approval_deadline",
+            "type": "deadline",
             "date": "March 1, 2028"
           },
           {
-            "type": "commercial_launch_date",
+            "type": "effective_date",
             "date": "July 1, 2028"
           },
           {
-            "type": "clinical_data_transfer_deadline",
+            "type": "deadline",
             "date": "December 15, 2027"
           }
         ]
@@ -2634,15 +2634,15 @@
         ],
         "dates": [
           {
-            "type": "sports_sponsorship_agreement_date",
+            "type": "agreement_date",
             "date": "October 8, 2027"
           },
           {
-            "type": "sponsorship_effective_date",
+            "type": "effective_date",
             "date": "January 1, 2028"
           },
           {
-            "type": "sponsorship_expiration_date",
+            "type": "expiration_date",
             "date": "December 31, 2032"
           }
         ]
@@ -2676,19 +2676,19 @@
         ],
         "dates": [
           {
-            "type": "settlement_agreement_date",
+            "type": "agreement_date",
             "date": "November 15, 2027"
           },
           {
-            "type": "payment_deadline",
+            "type": "deadline",
             "date": "December 30, 2027"
           },
           {
-            "type": "structured_payment_commencement_date",
+            "type": "effective_date",
             "date": "January 15, 2028"
           },
           {
-            "type": "court_approval_date",
+            "type": "milestone_date",
             "date": "October 30, 2027"
           }
         ]
@@ -2721,19 +2721,19 @@
         ],
         "dates": [
           {
-            "type": "vessel_charter_agreement_date",
+            "type": "agreement_date",
             "date": "December 9, 2027"
           },
           {
-            "type": "charter_effective_date",
+            "type": "effective_date",
             "date": "February 1, 2028"
           },
           {
-            "type": "charter_expiration_date",
+            "type": "expiration_date",
             "date": "July 31, 2029"
           },
           {
-            "type": "vessel_inspection_deadline",
+            "type": "deadline",
             "date": "January 15, 2028"
           }
         ]
@@ -2763,15 +2763,15 @@
         ],
         "dates": [
           {
-            "type": "software_escrow_agreement_date",
+            "type": "agreement_date",
             "date": "January 22, 2028"
           },
           {
-            "type": "escrow_effective_date",
+            "type": "effective_date",
             "date": "March 1, 2028"
           },
           {
-            "type": "escrow_expiration_date",
+            "type": "expiration_date",
             "date": "February 28, 2035"
           }
         ]
@@ -2804,15 +2804,15 @@
         ],
         "dates": [
           {
-            "type": "endorsement_agreement_date",
+            "type": "agreement_date",
             "date": "February 18, 2028"
           },
           {
-            "type": "endorsement_effective_date",
+            "type": "effective_date",
             "date": "April 1, 2028"
           },
           {
-            "type": "endorsement_expiration_date",
+            "type": "expiration_date",
             "date": "March 31, 2031"
           }
         ]
@@ -2845,23 +2845,23 @@
         ],
         "dates": [
           {
-            "type": "launch_services_agreement_date",
+            "type": "agreement_date",
             "date": "March 27, 2028"
           },
           {
-            "type": "launch_window_opening_date",
+            "type": "effective_date",
             "date": "June 15, 2028"
           },
           {
-            "type": "launch_window_closing_date",
+            "type": "effective_date",
             "date": "August 30, 2028"
           },
           {
-            "type": "backup_window_deadline",
+            "type": "deadline",
             "date": "December 31, 2028"
           },
           {
-            "type": "satellite_integration_deadline",
+            "type": "deadline",
             "date": "May 15, 2028"
           }
         ]
@@ -2899,23 +2899,23 @@
         ],
         "dates": [
           {
-            "type": "water_rights_purchase_date",
+            "type": "agreement_date",
             "date": "April 14, 2028"
           },
           {
-            "type": "transaction_closing_date",
+            "type": "closing_date",
             "date": "June 30, 2028"
           },
           {
-            "type": "pipeline_completion_deadline",
+            "type": "deadline",
             "date": "September 15, 2028"
           },
           {
-            "type": "regulatory_approval_date",
+            "type": "milestone_date",
             "date": "March 20, 2028"
           },
           {
-            "type": "original_appropriation_date",
+            "type": "agreement_date",
             "date": "July 4, 1924"
           }
         ]
@@ -2953,27 +2953,27 @@
         ],
         "dates": [
           {
-            "type": "blockchain_license_agreement_date",
+            "type": "agreement_date",
             "date": "May 8, 2028"
           },
           {
-            "type": "licensing_effective_date",
+            "type": "effective_date",
             "date": "July 1, 2028"
           },
           {
-            "type": "licensing_expiration_date",
+            "type": "expiration_date",
             "date": "June 30, 2038"
           },
           {
-            "type": "system_integration_deadline",
+            "type": "deadline",
             "date": "December 31, 2028"
           },
           {
-            "type": "pilot_testing_completion_date",
+            "type": "deadline",
             "date": "March 31, 2029"
           },
           {
-            "type": "full_deployment_deadline",
+            "type": "deadline",
             "date": "September 30, 2029"
           }
         ]
@@ -3022,15 +3022,15 @@
         ],
         "dates": [
           {
-            "type": "museum_exhibition_agreement_date",
+            "type": "agreement_date",
             "date": "June 19, 2028"
           },
           {
-            "type": "exhibition_tour_start_date",
+            "type": "effective_date",
             "date": "September 1, 2028"
           },
           {
-            "type": "exhibition_tour_end_date",
+            "type": "expiration_date",
             "date": "August 31, 2030"
           }
         ]
@@ -3063,23 +3063,23 @@
         ],
         "dates": [
           {
-            "type": "franchise_conversion_agreement_date",
+            "type": "agreement_date",
             "date": "July 13, 2028"
           },
           {
-            "type": "legal_documentation_deadline",
+            "type": "deadline",
             "date": "October 1, 2028"
           },
           {
-            "type": "renovations_completion_deadline",
+            "type": "deadline",
             "date": "February 28, 2029"
           },
           {
-            "type": "training_integration_deadline",
+            "type": "deadline",
             "date": "April 30, 2029"
           },
           {
-            "type": "lease_assignment_deadline",
+            "type": "deadline",
             "date": "September 15, 2028"
           }
         ]
@@ -3117,27 +3117,27 @@
         ],
         "dates": [
           {
-            "type": "clinical_collaboration_agreement_date",
+            "type": "agreement_date",
             "date": "August 17, 2028"
           },
           {
-            "type": "collaboration_effective_date",
+            "type": "effective_date",
             "date": "October 1, 2028"
           },
           {
-            "type": "collaboration_expiration_date",
+            "type": "expiration_date",
             "date": "September 30, 2034"
           },
           {
-            "type": "preclinical_studies_deadline",
+            "type": "deadline",
             "date": "June 30, 2030"
           },
           {
-            "type": "ind_filing_deadline",
+            "type": "deadline",
             "date": "December 31, 2030"
           },
           {
-            "type": "phase_1_enrollment_deadline",
+            "type": "deadline",
             "date": "September 30, 2031"
           }
         ]
@@ -3168,15 +3168,15 @@
         ],
         "dates": [
           {
-            "type": "agreement_execution_date",
+            "type": "agreement_date",
             "date": "March 12, 2025"
           },
           {
-            "type": "remediation_commencement_date",
+            "type": "effective_date",
             "date": "April 15, 2025"
           },
           {
-            "type": "compliance_deadline",
+            "type": "deadline",
             "date": "December 1, 2026"
           }
         ]
@@ -3210,15 +3210,15 @@
         ],
         "dates": [
           {
-            "type": "restructuring_agreement_date",
+            "type": "agreement_date",
             "date": "February 28, 2025"
           },
           {
-            "type": "modified_terms_effective_date",
+            "type": "effective_date",
             "date": "March 1, 2025"
           },
           {
-            "type": "extended_payment_deadline",
+            "type": "expiration_date",
             "date": "February 28, 2030"
           }
         ]
@@ -3249,7 +3249,7 @@
         ],
         "dates": [
           {
-            "type": "agreement_execution_date",
+            "type": "agreement_date",
             "date": "January 20, 2025"
           },
           {
@@ -3261,7 +3261,7 @@
             "date": "January 31, 2028"
           },
           {
-            "type": "annual_review_deadline",
+            "type": "deadline",
             "date": "June 30th of each contract year"
           }
         ]
@@ -3297,19 +3297,19 @@
         ],
         "dates": [
           {
-            "type": "agreement_signing_date",
+            "type": "agreement_date",
             "date": "November 5, 2024"
           },
           {
-            "type": "operative_date",
+            "type": "effective_date",
             "date": "January 1, 2025"
           },
           {
-            "type": "validity_expiration_date",
+            "type": "expiration_date",
             "date": "December 31, 2029"
           },
           {
-            "type": "annual_documentation_deadline",
+            "type": "deadline",
             "date": "March 31st each year"
           }
         ]
@@ -3344,19 +3344,19 @@
         ],
         "dates": [
           {
-            "type": "listing_agreement_date",
+            "type": "agreement_date",
             "date": "April 18, 2025"
           },
           {
-            "type": "listing_activation_date",
+            "type": "effective_date",
             "date": "May 1, 2025"
           },
           {
-            "type": "initial_term_expiration",
+            "type": "expiration_date",
             "date": "April 30, 2028"
           },
           {
-            "type": "monthly_report_deadline",
+            "type": "deadline",
             "date": "10th of each following month"
           }
         ]
@@ -3391,15 +3391,15 @@
         ],
         "dates": [
           {
-            "type": "purchase_agreement_execution_date",
+            "type": "agreement_date",
             "date": "June 14, 2025"
           },
           {
-            "type": "gold_standard_certification_deadline",
+            "type": "deadline",
             "date": "August 15, 2025"
           },
           {
-            "type": "credit_delivery_date",
+            "type": "deadline",
             "date": "September 30, 2025"
           }
         ]
@@ -3433,19 +3433,19 @@
         ],
         "dates": [
           {
-            "type": "agreement_signing_date",
+            "type": "agreement_date",
             "date": "September 8, 2024"
           },
           {
-            "type": "agreement_expiration_date",
+            "type": "agreement_date",
             "date": "September 7, 2027"
           },
           {
-            "type": "response_initiation_deadline",
+            "type": "deadline",
             "date": "within 4 hours of breach notification"
           },
           {
-            "type": "assessment_completion_deadline",
+            "type": "deadline",
             "date": "next business day"
           }
         ]
@@ -3481,19 +3481,19 @@
         ],
         "dates": [
           {
-            "type": "development_agreement_date",
+            "type": "agreement_date",
             "date": "December 3, 2024"
           },
           {
-            "type": "collaboration_commencement_date",
+            "type": "effective_date",
             "date": "January 15, 2025"
           },
           {
-            "type": "collaboration_completion_date",
+            "type": "deadline",
             "date": "December 31, 2027"
           },
           {
-            "type": "prototype_delivery_date",
+            "type": "deadline",
             "date": "October 1, 2026"
           }
         ]
@@ -3529,11 +3529,11 @@
         ],
         "dates": [
           {
-            "type": "futures_contract_execution_date",
+            "type": "agreement_date",
             "date": "May 7, 2025"
           },
           {
-            "type": "delivery_deadline",
+            "type": "deadline",
             "date": "October 31, 2025"
           }
         ]
@@ -3569,7 +3569,7 @@
         ],
         "dates": [
           {
-            "type": "trading_agreement_signing_date",
+            "type": "agreement_date",
             "date": "July 22, 2025"
           },
           {
@@ -3577,15 +3577,15 @@
             "date": "August 1, 2025"
           },
           {
-            "type": "agreement_expiration_date",
+            "type": "agreement_date",
             "date": "July 31, 2030"
           },
           {
-            "type": "monthly_transfer_deadline",
+            "type": "deadline",
             "date": "15th of each month"
           },
           {
-            "type": "annual_reconciliation_deadline",
+            "type": "deadline",
             "date": "January 31st of the following year"
           }
         ]
@@ -3620,23 +3620,23 @@
         ],
         "dates": [
           {
-            "type": "agreement_execution_date",
+            "type": "agreement_date",
             "date": "August 15, 2025"
           },
           {
-            "type": "service_commencement_date",
+            "type": "effective_date",
             "date": "September 1, 2025"
           },
           {
-            "type": "patient_enrollment_deadline",
+            "type": "deadline",
             "date": "March 31, 2026"
           },
           {
-            "type": "interim_analysis_deadline",
+            "type": "deadline",
             "date": "December 15, 2026"
           },
           {
-            "type": "database_lock_deadline",
+            "type": "deadline",
             "date": "August 31, 2027"
           }
         ]
@@ -3671,23 +3671,23 @@
         ],
         "dates": [
           {
-            "type": "shipping_contract_signing_date",
+            "type": "agreement_date",
             "date": "October 12, 2024"
           },
           {
-            "type": "schedule_effective_date",
+            "type": "effective_date",
             "date": "November 1, 2024"
           },
           {
-            "type": "contract_expiration_date",
+            "type": "agreement_date",
             "date": "October 31, 2026"
           },
           {
-            "type": "transit_schedule_requirement",
+            "type": "deadline",
             "date": "21-day transit schedule"
           },
           {
-            "type": "delivery_guarantee_deadline",
+            "type": "deadline",
             "date": "within 25 days of departure"
           }
         ]
@@ -3721,23 +3721,23 @@
         ],
         "dates": [
           {
-            "type": "licensing_agreement_date",
+            "type": "agreement_date",
             "date": "January 8, 2025"
           },
           {
-            "type": "licensing_term_commencement",
+            "type": "effective_date",
             "date": "February 1, 2025"
           },
           {
-            "type": "licensing_term_expiration",
+            "type": "expiration_date",
             "date": "January 31, 2035"
           },
           {
-            "type": "first_commercial_sale_target",
+            "type": "deadline",
             "date": "June 30, 2028"
           },
           {
-            "type": "quarterly_payment_deadline",
+            "type": "deadline",
             "date": "within 45 days of each quarter end"
           }
         ]
@@ -3772,23 +3772,23 @@
         ],
         "dates": [
           {
-            "type": "services_agreement_execution_date",
+            "type": "agreement_date",
             "date": "April 3, 2025"
           },
           {
-            "type": "service_operative_date",
+            "type": "effective_date",
             "date": "May 1, 2025"
           },
           {
-            "type": "service_contract_expiration",
+            "type": "agreement_date",
             "date": "April 30, 2030"
           },
           {
-            "type": "monthly_report_deadline",
+            "type": "deadline",
             "date": "5th of each following month"
           },
           {
-            "type": "annual_recycling_target_deadline",
+            "type": "deadline",
             "date": "December 31st of each contract year"
           }
         ]
@@ -3823,27 +3823,27 @@
         ],
         "dates": [
           {
-            "type": "endorsement_agreement_signing_date",
+            "type": "agreement_date",
             "date": "March 22, 2025"
           },
           {
-            "type": "endorsement_period_start",
+            "type": "effective_date",
             "date": "April 1, 2025"
           },
           {
-            "type": "endorsement_period_end",
+            "type": "expiration_date",
             "date": "March 31, 2027"
           },
           {
-            "type": "photo_shoot_completion_deadline",
+            "type": "deadline",
             "date": "August 1, 2025"
           },
           {
-            "type": "milan_fashion_show_date",
+            "type": "milestone_date",
             "date": "September 15, 2025"
           },
           {
-            "type": "new_york_launch_event_date",
+            "type": "effective_date",
             "date": "November 12, 2025"
           }
         ]
@@ -3878,19 +3878,19 @@
         ],
         "dates": [
           {
-            "type": "manufacturing_agreement_execution_date",
+            "type": "agreement_date",
             "date": "June 8, 2025"
           },
           {
-            "type": "manufacturing_commencement_date",
+            "type": "effective_date",
             "date": "July 15, 2025"
           },
           {
-            "type": "initial_production_target_deadline",
+            "type": "deadline",
             "date": "December 31, 2025"
           },
           {
-            "type": "annual_compliance_verification_deadline",
+            "type": "deadline",
             "date": "March 1st annually"
           }
         ]
@@ -3926,23 +3926,23 @@
         ],
         "dates": [
           {
-            "type": "joint_venture_agreement_date",
+            "type": "agreement_date",
             "date": "September 14, 2024"
           },
           {
-            "type": "capital_contribution_deadline",
+            "type": "deadline",
             "date": "November 30, 2024"
           },
           {
-            "type": "venture_operational_date",
+            "type": "effective_date",
             "date": "January 1, 2025"
           },
           {
-            "type": "venture_term_expiration",
+            "type": "expiration_date",
             "date": "December 31, 2034"
           },
           {
-            "type": "annual_partnership_review_date",
+            "type": "review_date",
             "date": "January 15th each year"
           }
         ]
@@ -3977,23 +3977,23 @@
         ],
         "dates": [
           {
-            "type": "quality_assurance_agreement_execution_date",
+            "type": "agreement_date",
             "date": "February 18, 2025"
           },
           {
-            "type": "service_commencement_date",
+            "type": "effective_date",
             "date": "March 1, 2025"
           },
           {
-            "type": "service_continuation_deadline",
+            "type": "deadline",
             "date": "February 28, 2028"
           },
           {
-            "type": "quarterly_compliance_verification_deadline",
+            "type": "deadline",
             "date": "15th of January, April, July, and October"
           },
           {
-            "type": "annual_recertification_deadline",
+            "type": "deadline",
             "date": "December 1st of each year"
           }
         ]
@@ -4029,31 +4029,31 @@
         ],
         "dates": [
           {
-            "type": "infrastructure_sharing_agreement_signing_date",
+            "type": "agreement_date",
             "date": "May 30, 2025"
           },
           {
-            "type": "sharing_arrangement_effective_date",
+            "type": "effective_date",
             "date": "July 1, 2025"
           },
           {
-            "type": "sharing_arrangement_expiration_date",
+            "type": "expiration_date",
             "date": "June 30, 2030"
           },
           {
-            "type": "equipment_installation_deadline",
+            "type": "deadline",
             "date": "September 15, 2025"
           },
           {
-            "type": "network_integration_testing_deadline",
+            "type": "deadline",
             "date": "October 31, 2025"
           },
           {
-            "type": "monthly_usage_report_deadline",
+            "type": "deadline",
             "date": "10th of each following month"
           },
           {
-            "type": "annual_capacity_review_date",
+            "type": "review_date",
             "date": "June 1st each year"
           }
         ]
@@ -4087,27 +4087,27 @@
         ],
         "dates": [
           {
-            "type": "facility_management_agreement_execution_date",
+            "type": "agreement_date",
             "date": "July 11, 2025"
           },
           {
-            "type": "management_contract_effective_date",
+            "type": "agreement_date",
             "date": "August 1, 2025"
           },
           {
-            "type": "management_contract_expiration_date",
+            "type": "agreement_date",
             "date": "July 31, 2030"
           },
           {
-            "type": "facility_preparation_deadline",
+            "type": "deadline",
             "date": "4 hours before each event"
           },
           {
-            "type": "monthly_operational_report_deadline",
+            "type": "deadline",
             "date": "5th of each following month"
           },
           {
-            "type": "annual_facility_assessment_deadline",
+            "type": "deadline",
             "date": "June 15th each year"
           }
         ]
