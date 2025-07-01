@@ -1,5 +1,5 @@
 {
-  "task_description": "Extract parties and dates from legal documents as JSON.\n\nFor parties, extract: name (exact text from document), role (Licensor, Licensee, Buyer, Seller, Client, Advisor, Agent, Manager, Authorized Signatory), entity_type (\"organization\" or \"individual\").\n\nFor dates, extract: date (in format \"Month DD, YYYY\"), type (agreement_date, effective_date, expiration_date, closing_date).\n\nReturn JSON format:\n{\n  \"parties\": [{\"name\": \"...\", \"role\": \"...\", \"entity_type\": \"...\"}],\n  \"dates\": [{\"date\": \"...\", \"type\": \"...\"}]\n}",
+  "task_description": "Extract parties and dates from legal documents as JSON.\n\nFor parties, extract: name (exact text from document), role (\"Licensor\", \"Licensee\", \"Buyer\", \"Seller\", \"Client\", \"Advisor\", \"Agent\", \"Manager\", \"Authorized Signatory\", or \"Other\"), entity_type (\"organization\" or \"individual\").\n\nFor dates, extract: date (in format \"Month DD, YYYY\"), type (agreement_date, effective_date, expiration_date, closing_date).\n\nReturn JSON format:\n{\n  \"parties\": [{\"name\": \"...\", \"role\": \"...\", \"entity_type\": \"...\"}],\n  \"dates\": [{\"date\": \"...\", \"type\": \"...\"}]\n}",
   "examples": [
     {
       "text": "The Software License Agreement dated May 15, 2024, between CodeCorp Systems Ltd., a Canadian corporation (\"Licensor\"), and Digital Innovations LLC, a Texas limited liability company (\"Licensee\"), establishes licensing terms for proprietary software. The agreement becomes effective immediately upon execution and remains in force until May 14, 2029. Robert Chen, acting as Chief Technology Officer of Digital Innovations LLC, has authorized this agreement on behalf of the company.",
@@ -39,11 +39,13 @@
         "parties": [
           {
             "name": "Strategic Advisors Inc.",
-            "role": "Advisor"
+            "role": "Advisor",
+            "entity_type": "organization"
           },
           {
             "name": "GrowthTech Corporation",
-            "role": "Client"
+            "role": "Client",
+            "entity_type": "organization"
           },
           {
             "name": "Maria Gonzalez",
@@ -73,7 +75,8 @@
         "parties": [
           {
             "name": "Heritage Properties Group",
-            "role": "Seller"
+            "role": "Seller",
+            "entity_type": "organization"
           },
           {
             "name": "Metro Development Corp.",
@@ -82,7 +85,8 @@
           },
           {
             "name": "First American Title Company",
-            "role": "Agent"
+            "role": "Agent",
+            "entity_type": "organization"
           },
           {
             "name": "Michael Thompson",
@@ -108,11 +112,13 @@
         "parties": [
           {
             "name": "Community Bank",
-            "role": "Lender"
+            "role": "Lender",
+            "entity_type": "organization"
           },
           {
             "name": "Regional Credit Union",
-            "role": "Lender"
+            "role": "Lender",
+            "entity_type": "organization"
           },
           {
             "name": "Jennifer Walsh",
@@ -146,13 +152,13 @@
         "parties": [
           {
             "name": "FastFood Enterprises LLC",
-            "role": "Buyer"
+            "role": "Buyer",
+            "entity_type": "organization"
           },
           {
             "name": "Corporate Services Inc.",
             "role": "Agent",
-            "jurisdiction": "Colorado",
-            "scope": "both parties"
+            "entity_type": "organization"
           }
         ],
         "dates": [
@@ -174,7 +180,8 @@
         "parties": [
           {
             "name": "Dr. Sarah Williams",
-            "role": "Assignor"
+            "role": "Assignor",
+            "entity_type": "individual"
           },
           {
             "name": "InnovateTech Solutions Inc.",
@@ -208,15 +215,18 @@
         "parties": [
           {
             "name": "Industrial Equipment Corp.",
-            "role": "Lessor"
+            "role": "Lessor",
+            "entity_type": "organization"
           },
           {
             "name": "Manufacturing Solutions LLC",
-            "role": "Lessee"
+            "role": "Lessee",
+            "entity_type": "organization"
           },
           {
             "name": "Equipment Finance Corp.",
-            "role": "Guarantor"
+            "role": "Guarantor",
+            "entity_type": "organization"
           }
         ],
         "dates": [
@@ -237,16 +247,18 @@
         "parties": [
           {
             "name": "TechStartup Inc.",
-            "role": "Assignor"
+            "role": "Assignor",
+            "entity_type": "organization"
           },
           {
             "name": "Venture Partners LLC",
-            "role": "Assignee"
+            "role": "Assignee",
+            "entity_type": "organization"
           },
           {
             "name": "Legal Counsel Services LLP",
             "role": "Legal Counsel",
-            "client": "TechStartup Inc."
+            "entity_type": "organization"
           },
           {
             "name": "David Kim",
@@ -272,11 +284,13 @@
         "parties": [
           {
             "name": "CloudServices Inc.",
-            "role": "Service Provider"
+            "role": "Service Provider",
+            "entity_type": "organization"
           },
           {
             "name": "Enterprise Client Corp.",
-            "role": "Client"
+            "role": "Client",
+            "entity_type": "organization"
           }
         ],
         "dates": [
@@ -301,7 +315,7 @@
       }
     },
     {
-      "text": "The Acquisition Agreement signed on November 25, 2024, provides for the acquisition of SmallTech Ltd., a UK private limited company, by GlobalCorp Inc. The transaction is expected to close by February 28, 2025, subject to regulatory approvals and customary closing conditions. Morgan Stanley serves as financial advisor to GlobalCorp Inc., while Rothschild & Co advises SmallTech Ltd. The purchase price is £75,000,000, with £15,000,000 held in escrow for 24 months.",
+      "text": "The Acquisition Agreement signed on November 25, 2024, provides for the acquisition of SmallTech Ltd., a UK private limited company, by GlobalCorp Inc. The transaction is expected to close by February 28, 2025, subject to regulatory approvals and customary closing conditions. Morgan Stanley serves as financial advisor to GlobalCorp Inc., while Rothschild & Co advises SmallTech Ltd. The purchase price is \u00a375,000,000, with \u00a315,000,000 held in escrow for 24 months.",
       "expected_output": {
         "parties": [
           {
@@ -311,17 +325,18 @@
           },
           {
             "name": "GlobalCorp Inc.",
-            "role": "Buyer"
+            "role": "Buyer",
+            "entity_type": "organization"
           },
           {
             "name": "Morgan Stanley",
             "role": "Financial Advisor",
-            "client": "GlobalCorp Inc."
+            "entity_type": "organization"
           },
           {
             "name": "Rothschild & Co",
             "role": "Financial Advisor",
-            "client": "SmallTech Ltd."
+            "entity_type": "organization"
           }
         ],
         "dates": [
@@ -343,7 +358,8 @@
         "parties": [
           {
             "name": "Research University Foundation",
-            "role": "Licensor"
+            "role": "Licensor",
+            "entity_type": "organization"
           },
           {
             "name": "BioTech Innovations Corp.",
@@ -378,20 +394,24 @@
         "parties": [
           {
             "name": "StartupCorp Inc.",
-            "role": "Authority"
+            "role": "Authority",
+            "entity_type": "organization"
           },
           {
             "name": "Institutional Investor Fund LP",
-            "role": "Investor"
+            "role": "Investor",
+            "entity_type": "organization"
           },
           {
             "name": "Law Firm Associates LLP",
             "role": "Legal Counsel",
+            "entity_type": "organization",
             "client": "StartupCorp Inc."
           },
           {
             "name": "Big Law Partners",
             "role": "Legal Counsel",
+            "entity_type": "organization",
             "client": "Institutional Investor Fund LP"
           }
         ],
@@ -417,19 +437,23 @@
         "parties": [
           {
             "name": "BuildCorp Construction Inc.",
-            "role": "Service Provider"
+            "role": "Service Provider",
+            "entity_type": "organization"
           },
           {
             "name": "Industrial Client LLC",
-            "role": "Owner"
+            "role": "Owner",
+            "entity_type": "organization"
           },
           {
             "name": "Surety Insurance Company",
-            "role": "Guarantor"
+            "role": "Guarantor",
+            "entity_type": "organization"
           },
           {
             "name": "Sarah Davis",
             "role": "Manager",
+            "entity_type": "individual",
             "employer": "BuildCorp Construction Inc."
           }
         ],
@@ -451,19 +475,23 @@
         "parties": [
           {
             "name": "Family Business Corp.",
-            "role": "Company"
+            "role": "Company",
+            "entity_type": "organization"
           },
           {
             "name": "Private Equity Fund III LP",
-            "role": "Buyer"
+            "role": "Buyer",
+            "entity_type": "organization"
           },
           {
             "name": "James Mitchell",
-            "role": "Officer"
+            "role": "Officer",
+            "entity_type": "individual"
           },
           {
             "name": "Investment Bank Services Inc.",
-            "role": "Financial Advisor"
+            "role": "Financial Advisor",
+            "entity_type": "organization"
           }
         ],
         "dates": [
@@ -484,19 +512,23 @@
         "parties": [
           {
             "name": "Corporate Borrower Inc.",
-            "role": "Borrower"
+            "role": "Borrower",
+            "entity_type": "organization"
           },
           {
             "name": "Prime Bank",
-            "role": "Lender"
+            "role": "Lender",
+            "entity_type": "organization"
           },
           {
             "name": "Regional Bank",
-            "role": "Lender"
+            "role": "Lender",
+            "entity_type": "organization"
           },
           {
             "name": "Patricia Wong",
-            "role": "Officer"
+            "role": "Officer",
+            "entity_type": "individual"
           }
         ],
         "dates": [
@@ -517,13 +549,15 @@
         "parties": [
           {
             "name": "International Distributor SA",
-            "role": "Seller"
+            "role": "Seller",
+            "entity_type": "organization"
           },
           {
             "name": "Corporate Services Ltd.",
             "role": "Agent",
             "client": "International Distributor SA",
-            "jurisdiction": "Panama"
+            "jurisdiction": "Panama",
+            "entity_type": "organization"
           }
         ],
         "dates": [
@@ -550,20 +584,24 @@
         "parties": [
           {
             "name": "TechCorp Inc.",
-            "role": "Company"
+            "role": "Company",
+            "entity_type": "organization"
           },
           {
             "name": "AcquirerCorp",
-            "role": "Buyer"
+            "role": "Buyer",
+            "entity_type": "organization"
           },
           {
             "name": "Proxy Services LLC",
-            "role": "Administrator"
+            "role": "Administrator",
+            "entity_type": "organization"
           },
           {
             "name": "Victoria Chang",
             "role": "Representative",
-            "ownership_percentage": "35%"
+            "ownership_percentage": "35%",
+            "entity_type": "individual"
           }
         ],
         "dates": [
@@ -585,19 +623,23 @@
         "parties": [
           {
             "name": "Escrow Services Bank",
-            "role": "Agent"
+            "role": "Agent",
+            "entity_type": "organization"
           },
           {
             "name": "MegaCorp Inc.",
-            "role": "Buyer"
+            "role": "Buyer",
+            "entity_type": "individual"
           },
           {
             "name": "SmallCorp LLC",
-            "role": "Seller"
+            "role": "Seller",
+            "entity_type": "organization"
           },
           {
             "name": "Williams & Associates",
-            "role": "Service Provider"
+            "role": "Service Provider",
+            "entity_type": "individual"
           }
         ],
         "dates": [
@@ -618,15 +660,18 @@
         "parties": [
           {
             "name": "Parent Company Holdings Inc.",
-            "role": "Guarantor"
+            "role": "Guarantor",
+            "entity_type": "organization"
           },
           {
             "name": "Operations LLC",
-            "role": "Beneficiary"
+            "role": "Beneficiary",
+            "entity_type": "organization"
           },
           {
             "name": "Insurance Broker Services Inc.",
-            "role": "Service Provider"
+            "role": "Service Provider",
+            "entity_type": "organization"
           }
         ],
         "dates": [
@@ -647,15 +692,18 @@
         "parties": [
           {
             "name": "Investor Group LLC",
-            "role": "Owner"
+            "role": "Owner",
+            "entity_type": "organization"
           },
           {
             "name": "Transfer Agent Services Corp.",
-            "role": "Agent"
+            "role": "Agent",
+            "entity_type": "organization"
           },
           {
             "name": "Mark Johnson",
-            "role": "Officer"
+            "role": "Officer",
+            "entity_type": "individual"
           }
         ],
         "dates": [
@@ -682,11 +730,13 @@
           {
             "name": "Lisa Rodriguez",
             "role": "Professional",
-            "position": "Chief Operations Officer"
+            "position": "Chief Operations Officer",
+            "entity_type": "individual"
           },
           {
             "name": "Executive Benefits Solutions Inc.",
-            "role": "Administrator"
+            "role": "Administrator",
+            "entity_type": "individual"
           }
         ],
         "dates": [
@@ -711,15 +761,18 @@
         "parties": [
           {
             "name": "Thomas Wright",
-            "role": "Partner"
+            "role": "Partner",
+            "entity_type": "individual"
           },
           {
             "name": "Catherine Bell",
-            "role": "Partner"
+            "role": "Partner",
+            "entity_type": "individual"
           },
           {
             "name": "Peterson & Associates LLP",
-            "role": "Service Provider"
+            "role": "Service Provider",
+            "entity_type": "organization"
           }
         ],
         "dates": [
@@ -739,7 +792,7 @@
       }
     },
     {
-      "text": "The Distribution Agreement signed on August 14, 2024, appoints European Sales Ltd., a UK limited company, as exclusive distributor for North American products throughout the European Union. The distribution term is 5 years, commencing September 1, 2024, and ending August 31, 2029. Minimum purchase commitments of €3,000,000 annually must be met by December 31st of each contract year. Cross-Border Logistics Inc. has been designated as the preferred shipping agent. Regional Sales Manager Antonio Silva will oversee European operations.",
+      "text": "The Distribution Agreement signed on August 14, 2024, appoints European Sales Ltd., a UK limited company, as exclusive distributor for North American products throughout the European Union. The distribution term is 5 years, commencing September 1, 2024, and ending August 31, 2029. Minimum purchase commitments of \u20ac3,000,000 annually must be met by December 31st of each contract year. Cross-Border Logistics Inc. has been designated as the preferred shipping agent. Regional Sales Manager Antonio Silva will oversee European operations.",
       "expected_output": {
         "parties": [
           {
@@ -749,11 +802,13 @@
           },
           {
             "name": "Cross-Border Logistics Inc.",
-            "role": "Agent"
+            "role": "Agent",
+            "entity_type": "individual"
           },
           {
             "name": "Antonio Silva",
-            "role": "Manager"
+            "role": "Manager",
+            "entity_type": "individual"
           }
         ],
         "dates": [
@@ -778,19 +833,23 @@
         "parties": [
           {
             "name": "Pharmaceutical Corp.",
-            "role": "Partner"
+            "role": "Partner",
+            "entity_type": "individual"
           },
           {
             "name": "Research Institute Inc.",
-            "role": "Partner"
+            "role": "Partner",
+            "entity_type": "individual"
           },
           {
             "name": "Regulatory Consulting Services LLC",
-            "role": "Service Provider"
+            "role": "Service Provider",
+            "entity_type": "organization"
           },
           {
             "name": "Dr. Jennifer Park",
-            "role": "Officer"
+            "role": "Officer",
+            "entity_type": "individual"
           }
         ],
         "dates": [
@@ -819,19 +878,23 @@
         "parties": [
           {
             "name": "First National Bank",
-            "role": "Guarantor"
+            "role": "Guarantor",
+            "entity_type": "organization"
           },
           {
             "name": "Retail Business LLC",
-            "role": "Borrower"
+            "role": "Borrower",
+            "entity_type": "organization"
           },
           {
             "name": "Appraisal Services Inc.",
-            "role": "Service Provider"
+            "role": "Service Provider",
+            "entity_type": "organization"
           },
           {
             "name": "Rebecca Martinez",
-            "role": "Officer"
+            "role": "Officer",
+            "entity_type": "individual"
           }
         ],
         "dates": [
@@ -852,19 +915,23 @@
         "parties": [
           {
             "name": "Primary Tenant LLC",
-            "role": "Lessor"
+            "role": "Lessor",
+            "entity_type": "organization"
           },
           {
             "name": "Tech Startup Inc.",
-            "role": "Lessee"
+            "role": "Lessee",
+            "entity_type": "individual"
           },
           {
             "name": "Property Management Services Ltd.",
-            "role": "Manager"
+            "role": "Manager",
+            "entity_type": "organization"
           },
           {
             "name": "Commercial Properties Corp.",
-            "role": "Owner"
+            "role": "Owner",
+            "entity_type": "individual"
           }
         ],
         "dates": [
@@ -889,15 +956,18 @@
         "parties": [
           {
             "name": "Subsidiary Corp.",
-            "role": "Company"
+            "role": "Company",
+            "entity_type": "individual"
           },
           {
             "name": "Parent Holdings Inc.",
-            "role": "Company"
+            "role": "Company",
+            "entity_type": "organization"
           },
           {
             "name": "Jane Thompson",
-            "role": "Officer"
+            "role": "Officer",
+            "entity_type": "individual"
           }
         ],
         "dates": [
@@ -922,19 +992,23 @@
         "parties": [
           {
             "name": "Executive Management Corp.",
-            "role": "Service Provider"
+            "role": "Service Provider",
+            "entity_type": "individual"
           },
           {
             "name": "Turnaround Company Inc.",
-            "role": "Client"
+            "role": "Client",
+            "entity_type": "organization"
           },
           {
             "name": "Restructuring Advisors LLC",
-            "role": "Financial Advisor"
+            "role": "Financial Advisor",
+            "entity_type": "organization"
           },
           {
             "name": "Christopher Lee",
-            "role": "Officer"
+            "role": "Officer",
+            "entity_type": "individual"
           }
         ],
         "dates": [
@@ -955,7 +1029,8 @@
         "parties": [
           {
             "name": "Industrial Seller Corp.",
-            "role": "Seller"
+            "role": "Seller",
+            "entity_type": "individual"
           },
           {
             "name": "Equipment Buyer LLC",
@@ -964,15 +1039,18 @@
           },
           {
             "name": "Title Company of Michigan",
-            "role": "Agent"
+            "role": "Agent",
+            "entity_type": "organization"
           },
           {
             "name": "Industrial Appraisers Inc.",
-            "role": "Service Provider"
+            "role": "Service Provider",
+            "entity_type": "individual"
           },
           {
             "name": "GreenTech Environmental LLC",
-            "role": "Advisor"
+            "role": "Advisor",
+            "entity_type": "organization"
           }
         ],
         "dates": [
@@ -997,19 +1075,23 @@
         "parties": [
           {
             "name": "Heritage Trust Company",
-            "role": "Administrator"
+            "role": "Administrator",
+            "entity_type": "organization"
           },
           {
             "name": "William Anderson",
-            "role": "Administrator"
+            "role": "Administrator",
+            "entity_type": "individual"
           },
           {
             "name": "Professional Fiduciary Services Inc.",
-            "role": "Administrator"
+            "role": "Administrator",
+            "entity_type": "organization"
           },
           {
             "name": "Charles Morgan",
-            "role": "Advisor"
+            "role": "Advisor",
+            "entity_type": "individual"
           }
         ],
         "dates": [
@@ -1039,19 +1121,23 @@
         "parties": [
           {
             "name": "Global Components Inc.",
-            "role": "Seller"
+            "role": "Seller",
+            "entity_type": "individual"
           },
           {
             "name": "Manufacturing Corp.",
-            "role": "Buyer"
+            "role": "Buyer",
+            "entity_type": "individual"
           },
           {
             "name": "Independent Testing Labs LLC",
-            "role": "Service Provider"
+            "role": "Service Provider",
+            "entity_type": "organization"
           },
           {
             "name": "Kelly Chen",
-            "role": "Manager"
+            "role": "Manager",
+            "entity_type": "individual"
           }
         ],
         "dates": [
@@ -1078,16 +1164,19 @@
         "parties": [
           {
             "name": "Development Partners LLC",
-            "role": "Owner"
+            "role": "Owner",
+            "entity_type": "organization"
           },
           {
             "name": "Landowner Holdings Inc.",
-            "role": "Owner"
+            "role": "Owner",
+            "entity_type": "organization"
           },
           {
             "name": "Susan Walsh",
             "role": "Legal Counsel",
-            "client": "Landowner Holdings Inc."
+            "client": "Landowner Holdings Inc.",
+            "entity_type": "individual"
           }
         ],
         "dates": [
@@ -1107,20 +1196,23 @@
       }
     },
     {
-      "text": "The Standby Letter of Credit issued on August 5, 2024, by Commerce Bank in favor of International Supplier SA guarantees payment of up to €2,500,000 for goods delivered under the underlying sales contract. The letter of credit expires on August 4, 2025, and is automatically renewable for successive one-year terms unless terminated with 60 days notice. Presentation of compliant documents must occur by 5:00 PM local time on the expiration date. Documentary requirements include commercial invoices, bills of lading, and inspection certificates. Trade Finance Services Corp. serves as the confirming bank.",
+      "text": "The Standby Letter of Credit issued on August 5, 2024, by Commerce Bank in favor of International Supplier SA guarantees payment of up to \u20ac2,500,000 for goods delivered under the underlying sales contract. The letter of credit expires on August 4, 2025, and is automatically renewable for successive one-year terms unless terminated with 60 days notice. Presentation of compliant documents must occur by 5:00 PM local time on the expiration date. Documentary requirements include commercial invoices, bills of lading, and inspection certificates. Trade Finance Services Corp. serves as the confirming bank.",
       "expected_output": {
         "parties": [
           {
             "name": "Commerce Bank",
-            "role": "Investor"
+            "role": "Investor",
+            "entity_type": "organization"
           },
           {
             "name": "International Supplier SA",
-            "role": "Beneficiary"
+            "role": "Beneficiary",
+            "entity_type": "organization"
           },
           {
             "name": "Trade Finance Services Corp.",
-            "role": "Investor"
+            "role": "Investor",
+            "entity_type": "organization"
           }
         ],
         "dates": [
@@ -1141,19 +1233,23 @@
         "parties": [
           {
             "name": "Entertainment Media LLC",
-            "role": "Licensee"
+            "role": "Licensee",
+            "entity_type": "organization"
           },
           {
             "name": "Songwriter Productions Inc.",
-            "role": "Licensor"
+            "role": "Licensor",
+            "entity_type": "individual"
           },
           {
             "name": "Music Rights Society",
-            "role": "Service Provider"
+            "role": "Service Provider",
+            "entity_type": "individual"
           },
           {
             "name": "Michael Torres",
-            "role": "Manager"
+            "role": "Manager",
+            "entity_type": "individual"
           }
         ],
         "dates": [
@@ -1174,19 +1270,23 @@
         "parties": [
           {
             "name": "Parent Corporation",
-            "role": "Guarantor"
+            "role": "Guarantor",
+            "entity_type": "organization"
           },
           {
             "name": "Operating Company LLC",
-            "role": "Borrower"
+            "role": "Borrower",
+            "entity_type": "organization"
           },
           {
             "name": "Regional Bank",
-            "role": "Lender"
+            "role": "Lender",
+            "entity_type": "organization"
           },
           {
             "name": "Robert Kim",
-            "role": "Officer"
+            "role": "Officer",
+            "entity_type": "individual"
           }
         ],
         "dates": [
@@ -1207,15 +1307,18 @@
         "parties": [
           {
             "name": "Legal Advisory Group LLP",
-            "role": "Legal Counsel"
+            "role": "Legal Counsel",
+            "entity_type": "organization"
           },
           {
             "name": "Tech Innovation Corp.",
-            "role": "Client"
+            "role": "Client",
+            "entity_type": "individual"
           },
           {
             "name": "Jennifer Adams",
-            "role": "Legal Counsel"
+            "role": "Legal Counsel",
+            "entity_type": "individual"
           }
         ],
         "dates": [
@@ -1242,21 +1345,25 @@
           {
             "name": "Emma Johnson",
             "role": "Investor",
-            "ownership_percentage": "45%"
+            "ownership_percentage": "45%",
+            "entity_type": "individual"
           },
           {
             "name": "David Martinez",
             "role": "Investor",
-            "ownership_percentage": "35%"
+            "ownership_percentage": "35%",
+            "entity_type": "individual"
           },
           {
             "name": "Lisa Thompson",
             "role": "Investor",
-            "ownership_percentage": "20%"
+            "ownership_percentage": "20%",
+            "entity_type": "individual"
           },
           {
             "name": "Valuation Experts LLC",
-            "role": "Service Provider"
+            "role": "Service Provider",
+            "entity_type": "organization"
           }
         ],
         "dates": [
@@ -1278,7 +1385,8 @@
         "parties": [
           {
             "name": "Original Tenant Corp.",
-            "role": "Assignor"
+            "role": "Assignor",
+            "entity_type": "individual"
           },
           {
             "name": "New Tenant LLC",
@@ -1287,7 +1395,8 @@
           },
           {
             "name": "Retail Management Services Inc.",
-            "role": "Company"
+            "role": "Company",
+            "entity_type": "organization"
           }
         ],
         "dates": [
@@ -1317,25 +1426,30 @@
           {
             "name": "Alex Wilson",
             "role": "Partner",
-            "ownership_percentage": "one-third"
+            "ownership_percentage": "one-third",
+            "entity_type": "individual"
           },
           {
             "name": "Patricia Brown",
             "role": "Partner",
-            "ownership_percentage": "one-third"
+            "ownership_percentage": "one-third",
+            "entity_type": "individual"
           },
           {
             "name": "Christopher Taylor",
             "role": "Partner",
-            "ownership_percentage": "one-third"
+            "ownership_percentage": "one-third",
+            "entity_type": "individual"
           },
           {
             "name": "Commercial Valuations Inc.",
-            "role": "Service Provider"
+            "role": "Service Provider",
+            "entity_type": "individual"
           },
           {
             "name": "Insurance Agency Partners LLC",
-            "role": "Service Provider"
+            "role": "Service Provider",
+            "entity_type": "organization"
           }
         ],
         "dates": [
@@ -1357,19 +1471,23 @@
         "parties": [
           {
             "name": "Seller Corporation",
-            "role": "Service Provider"
+            "role": "Service Provider",
+            "entity_type": "organization"
           },
           {
             "name": "Buyer Holdings Inc.",
-            "role": "Client"
+            "role": "Client",
+            "entity_type": "organization"
           },
           {
             "name": "Transition Management LLC",
-            "role": "Service Provider"
+            "role": "Service Provider",
+            "entity_type": "organization"
           },
           {
             "name": "Sandra Garcia",
-            "role": "Manager"
+            "role": "Manager",
+            "entity_type": "individual"
           }
         ],
         "dates": [
@@ -1399,15 +1517,18 @@
           },
           {
             "name": "Resort Development LLC",
-            "role": "Client"
+            "role": "Client",
+            "entity_type": "organization"
           },
           {
             "name": "Risk Management Consultants Inc.",
-            "role": "Service Provider"
+            "role": "Service Provider",
+            "entity_type": "individual"
           },
           {
             "name": "Amanda Sterling",
-            "role": "Service Provider"
+            "role": "Service Provider",
+            "entity_type": "individual"
           }
         ],
         "dates": [
@@ -1432,16 +1553,19 @@
         "parties": [
           {
             "name": "Software Innovations Inc.",
-            "role": "Company"
+            "role": "Company",
+            "entity_type": "individual"
           },
           {
             "name": "Rachel Green",
             "role": "Professional",
-            "position": "Senior Developer"
+            "position": "Senior Developer",
+            "entity_type": "individual"
           },
           {
             "name": "Gregory Matthews",
-            "role": "Legal Counsel"
+            "role": "Legal Counsel",
+            "entity_type": "individual"
           }
         ],
         "dates": [
@@ -1467,7 +1591,8 @@
         "parties": [
           {
             "name": "Manufacturing Solutions Corp.",
-            "role": "Seller"
+            "role": "Seller",
+            "entity_type": "individual"
           },
           {
             "name": "Commercial Finance LLC",
@@ -1476,7 +1601,8 @@
           },
           {
             "name": "Timothy Brooks",
-            "role": "Manager"
+            "role": "Manager",
+            "entity_type": "individual"
           }
         ],
         "dates": [
@@ -1497,15 +1623,18 @@
         "parties": [
           {
             "name": "Regional Retailer Inc.",
-            "role": "Licensee"
+            "role": "Licensee",
+            "entity_type": "individual"
           },
           {
             "name": "Intellectual Property Law Firm",
-            "role": "Legal Counsel"
+            "role": "Legal Counsel",
+            "entity_type": "individual"
           },
           {
             "name": "Kevin Liu",
-            "role": "Manager"
+            "role": "Manager",
+            "entity_type": "individual"
           }
         ],
         "dates": [
@@ -1530,23 +1659,28 @@
         "parties": [
           {
             "name": "Logistics Solutions Inc.",
-            "role": "Service Provider"
+            "role": "Service Provider",
+            "entity_type": "individual"
           },
           {
             "name": "Import-Export Corp.",
-            "role": "Client"
+            "role": "Client",
+            "entity_type": "individual"
           },
           {
             "name": "Third-Party Logistics LLC",
-            "role": "Service Provider"
+            "role": "Service Provider",
+            "entity_type": "organization"
           },
           {
             "name": "Storage Insurance Partners",
-            "role": "Service Provider"
+            "role": "Service Provider",
+            "entity_type": "individual"
           },
           {
             "name": "External Auditors LLP",
-            "role": "Service Provider"
+            "role": "Service Provider",
+            "entity_type": "organization"
           }
         ],
         "dates": [
@@ -1571,7 +1705,8 @@
         "parties": [
           {
             "name": "University Research Foundation",
-            "role": "Company"
+            "role": "Company",
+            "entity_type": "individual"
           },
           {
             "name": "Pharmaceutical Development Inc.",
@@ -1580,11 +1715,13 @@
           },
           {
             "name": "Dr. Elizabeth Carter",
-            "role": "Professional"
+            "role": "Professional",
+            "entity_type": "individual"
           },
           {
             "name": "Technology Transfer Office",
-            "role": "Company"
+            "role": "Company",
+            "entity_type": "individual"
           }
         ],
         "dates": [
@@ -1617,19 +1754,23 @@
         "parties": [
           {
             "name": "Industrial Maintenance Corp.",
-            "role": "Service Provider"
+            "role": "Service Provider",
+            "entity_type": "individual"
           },
           {
             "name": "Production Facility LLC",
-            "role": "Owner"
+            "role": "Owner",
+            "entity_type": "organization"
           },
           {
             "name": "Julie Harrison",
-            "role": "Manager"
+            "role": "Manager",
+            "entity_type": "individual"
           },
           {
             "name": "Parts Supply Specialists Inc.",
-            "role": "Service Provider"
+            "role": "Service Provider",
+            "entity_type": "individual"
           }
         ],
         "dates": [
@@ -1659,7 +1800,8 @@
         "parties": [
           {
             "name": "Broadcasting Network Inc.",
-            "role": "Owner"
+            "role": "Owner",
+            "entity_type": "individual"
           },
           {
             "name": "Sports Entertainment LLC",
@@ -1668,11 +1810,13 @@
           },
           {
             "name": "Sports Media Productions Corp.",
-            "role": "Service Provider"
+            "role": "Service Provider",
+            "entity_type": "individual"
           },
           {
             "name": "Sports Agent Alliance",
-            "role": "Representative"
+            "role": "Representative",
+            "entity_type": "individual"
           }
         ],
         "dates": [
@@ -1697,23 +1841,28 @@
         "parties": [
           {
             "name": "Export Credit Bank",
-            "role": "Investor"
+            "role": "Investor",
+            "entity_type": "organization"
           },
           {
             "name": "American Manufacturer Inc.",
-            "role": "Seller"
+            "role": "Seller",
+            "entity_type": "individual"
           },
           {
             "name": "International Buyer SA",
-            "role": "Buyer"
+            "role": "Buyer",
+            "entity_type": "organization"
           },
           {
             "name": "Trade Credit Insurance Corp.",
-            "role": "Service Provider"
+            "role": "Service Provider",
+            "entity_type": "individual"
           },
           {
             "name": "Margaret Foster",
-            "role": "Officer"
+            "role": "Officer",
+            "entity_type": "individual"
           }
         ],
         "dates": [
@@ -1743,15 +1892,18 @@
           },
           {
             "name": "Healthcare Systems LLC",
-            "role": "Service Provider"
+            "role": "Service Provider",
+            "entity_type": "organization"
           },
           {
             "name": "Dr. Nathan Reed",
-            "role": "Officer"
+            "role": "Officer",
+            "entity_type": "individual"
           },
           {
             "name": "SecureData Inc.",
-            "role": "Service Provider"
+            "role": "Service Provider",
+            "entity_type": "individual"
           }
         ],
         "dates": [
@@ -1781,15 +1933,18 @@
           },
           {
             "name": "Financial Services Inc.",
-            "role": "Client"
+            "role": "Client",
+            "entity_type": "organization"
           },
           {
             "name": "Steven Walsh",
-            "role": "Professional"
+            "role": "Professional",
+            "entity_type": "individual"
           },
           {
             "name": "Quality Assurance Partners LLC",
-            "role": "Service Provider"
+            "role": "Service Provider",
+            "entity_type": "organization"
           }
         ],
         "dates": [
@@ -1822,19 +1977,23 @@
         "parties": [
           {
             "name": "Solar Energy Solutions LLC",
-            "role": "Seller"
+            "role": "Seller",
+            "entity_type": "organization"
           },
           {
             "name": "Municipal Utility District",
-            "role": "Buyer"
+            "role": "Buyer",
+            "entity_type": "individual"
           },
           {
             "name": "Transmission Services Corp.",
-            "role": "Manager"
+            "role": "Manager",
+            "entity_type": "organization"
           },
           {
             "name": "Daniel Rivera",
-            "role": "Manager"
+            "role": "Manager",
+            "entity_type": "individual"
           }
         ],
         "dates": [
@@ -1859,31 +2018,38 @@
         "parties": [
           {
             "name": "Investment Bank LLC",
-            "role": "Lender"
+            "role": "Lender",
+            "entity_type": "organization"
           },
           {
             "name": "Target Manufacturing Corp.",
-            "role": "Company"
+            "role": "Company",
+            "entity_type": "individual"
           },
           {
             "name": "Private Equity Buyer LP",
-            "role": "Buyer"
+            "role": "Buyer",
+            "entity_type": "organization"
           },
           {
             "name": "Regional Bank",
-            "role": "Lender"
+            "role": "Lender",
+            "entity_type": "organization"
           },
           {
             "name": "Documentation Bank",
-            "role": "Administrator"
+            "role": "Administrator",
+            "entity_type": "organization"
           },
           {
             "name": "Corporate Law Firm LLP",
-            "role": "Service Provider"
+            "role": "Service Provider",
+            "entity_type": "organization"
           },
           {
             "name": "Angela Thompson",
-            "role": "Officer"
+            "role": "Officer",
+            "entity_type": "individual"
           }
         ],
         "dates": [
@@ -1904,7 +2070,8 @@
         "parties": [
           {
             "name": "Medical Research Institute",
-            "role": "Company"
+            "role": "Company",
+            "entity_type": "individual"
           },
           {
             "name": "Biotechnology Corp.",
@@ -1913,15 +2080,18 @@
           },
           {
             "name": "Dr. Michael Foster",
-            "role": "Professional"
+            "role": "Professional",
+            "entity_type": "individual"
           },
           {
             "name": "Regulatory Affairs Consulting LLC",
-            "role": "Service Provider"
+            "role": "Service Provider",
+            "entity_type": "organization"
           },
           {
             "name": "Independent Safety Board",
-            "role": "Administrator"
+            "role": "Administrator",
+            "entity_type": "individual"
           }
         ],
         "dates": [
@@ -1954,23 +2124,28 @@
         "parties": [
           {
             "name": "Logistics Transport Inc.",
-            "role": "Service Provider"
+            "role": "Service Provider",
+            "entity_type": "individual"
           },
           {
             "name": "Retail Distribution Corp.",
-            "role": "Service Provider"
+            "role": "Service Provider",
+            "entity_type": "individual"
           },
           {
             "name": "Carlos Rodriguez",
-            "role": "Manager"
+            "role": "Manager",
+            "entity_type": "individual"
           },
           {
             "name": "Commercial Insurance Partners",
-            "role": "Service Provider"
+            "role": "Service Provider",
+            "entity_type": "individual"
           },
           {
             "name": "Logistics Technology Solutions LLC",
-            "role": "Service Provider"
+            "role": "Service Provider",
+            "entity_type": "organization"
           }
         ],
         "dates": [
@@ -1995,23 +2170,28 @@
         "parties": [
           {
             "name": "Agricultural Producer Corp.",
-            "role": "Investor"
+            "role": "Investor",
+            "entity_type": "individual"
           },
           {
             "name": "Commodity Trading LLC",
-            "role": "Claimant"
+            "role": "Claimant",
+            "entity_type": "organization"
           },
           {
             "name": "Farm Credit Bank",
-            "role": "Authority"
+            "role": "Authority",
+            "entity_type": "organization"
           },
           {
             "name": "Agricultural Risk Advisors Inc.",
-            "role": "Advisor"
+            "role": "Advisor",
+            "entity_type": "individual"
           },
           {
             "name": "Jennifer Park",
-            "role": "Officer"
+            "role": "Officer",
+            "entity_type": "individual"
           }
         ],
         "dates": [
@@ -2037,15 +2217,18 @@
           },
           {
             "name": "Enterprise Communications LLC",
-            "role": "Client"
+            "role": "Client",
+            "entity_type": "organization"
           },
           {
             "name": "Equipment Vendor Inc.",
-            "role": "Service Provider"
+            "role": "Service Provider",
+            "entity_type": "individual"
           },
           {
             "name": "Brian Chen",
-            "role": "Manager"
+            "role": "Manager",
+            "entity_type": "individual"
           }
         ],
         "dates": [
@@ -2075,19 +2258,23 @@
         "parties": [
           {
             "name": "Literary Publications Inc.",
-            "role": "Professional"
+            "role": "Professional",
+            "entity_type": "individual"
           },
           {
             "name": "Sarah Mitchell",
-            "role": "Professional"
+            "role": "Professional",
+            "entity_type": "individual"
           },
           {
             "name": "Publishing Services LLC",
-            "role": "Service Provider"
+            "role": "Service Provider",
+            "entity_type": "organization"
           },
           {
             "name": "Rebecca Adams",
-            "role": "Agent"
+            "role": "Agent",
+            "entity_type": "individual"
           }
         ],
         "dates": [
@@ -2129,15 +2316,18 @@
           },
           {
             "name": "Pension Fund Trust",
-            "role": "Client"
+            "role": "Client",
+            "entity_type": "individual"
           },
           {
             "name": "Trust Bank Corp.",
-            "role": "Administrator"
+            "role": "Administrator",
+            "entity_type": "organization"
           },
           {
             "name": "Fund Administration Services LLC",
-            "role": "Service Provider"
+            "role": "Service Provider",
+            "entity_type": "organization"
           }
         ],
         "dates": [
@@ -2167,23 +2357,28 @@
         "parties": [
           {
             "name": "Green Energy Corp.",
-            "role": "Seller"
+            "role": "Seller",
+            "entity_type": "individual"
           },
           {
             "name": "Sustainable Manufacturing LLC",
-            "role": "Buyer"
+            "role": "Buyer",
+            "entity_type": "organization"
           },
           {
             "name": "Green Certification Services Inc.",
-            "role": "Administrator"
+            "role": "Administrator",
+            "entity_type": "organization"
           },
           {
             "name": "REC Registry Solutions LLC",
-            "role": "Service Provider"
+            "role": "Service Provider",
+            "entity_type": "organization"
           },
           {
             "name": "Maria Gonzalez",
-            "role": "Officer"
+            "role": "Officer",
+            "entity_type": "individual"
           }
         ],
         "dates": [
@@ -2208,7 +2403,8 @@
         "parties": [
           {
             "name": "Commercial Dispute LLC",
-            "role": "Claimant"
+            "role": "Claimant",
+            "entity_type": "organization"
           },
           {
             "name": "Business Rival Corp.",
@@ -2217,16 +2413,19 @@
           },
           {
             "name": "International Arbitration Services Inc.",
-            "role": "Administrator"
+            "role": "Administrator",
+            "entity_type": "organization"
           },
           {
             "name": "Neutral Selection Services LLC",
-            "role": "Administrator"
+            "role": "Administrator",
+            "entity_type": "organization"
           },
           {
             "name": "Michael Roberts",
             "role": "Legal Counsel",
-            "client": "Commercial Dispute LLC"
+            "client": "Commercial Dispute LLC",
+            "entity_type": "individual"
           }
         ],
         "dates": [
@@ -2251,24 +2450,29 @@
         "parties": [
           {
             "name": "Debtor Industries Inc.",
-            "role": "Borrower"
+            "role": "Borrower",
+            "entity_type": "individual"
           },
           {
             "name": "Creditor Consortium LLC",
-            "role": "Investor"
+            "role": "Investor",
+            "entity_type": "organization"
           },
           {
             "name": "Bankruptcy Trustee Services Corp.",
-            "role": "Administrator"
+            "role": "Administrator",
+            "entity_type": "organization"
           },
           {
             "name": "Patricia White",
             "role": "Legal Counsel",
-            "client": "Debtor Industries Inc."
+            "client": "Debtor Industries Inc.",
+            "entity_type": "individual"
           },
           {
             "name": "Claims Administration Inc.",
-            "role": "Administrator"
+            "role": "Administrator",
+            "entity_type": "individual"
           }
         ],
         "dates": [
@@ -2297,23 +2501,28 @@
         "parties": [
           {
             "name": "Extraction Corp.",
-            "role": "Lessee"
+            "role": "Lessee",
+            "entity_type": "individual"
           },
           {
             "name": "Landowner Trust",
-            "role": "Lessor"
+            "role": "Lessor",
+            "entity_type": "individual"
           },
           {
             "name": "Mountain Trust Company",
-            "role": "Administrator"
+            "role": "Administrator",
+            "entity_type": "organization"
           },
           {
             "name": "State Mining Authority",
-            "role": "Authority"
+            "role": "Authority",
+            "entity_type": "individual"
           },
           {
             "name": "Dr. James Wilson",
-            "role": "Professional"
+            "role": "Professional",
+            "entity_type": "individual"
           }
         ],
         "dates": [
@@ -2347,23 +2556,28 @@
           },
           {
             "name": "Production Studio Corp.",
-            "role": "Professional"
+            "role": "Professional",
+            "entity_type": "individual"
           },
           {
             "name": "Entertainment Bond Company",
-            "role": "Service Provider"
+            "role": "Service Provider",
+            "entity_type": "organization"
           },
           {
             "name": "Katherine Davis",
-            "role": "Professional"
+            "role": "Professional",
+            "entity_type": "individual"
           },
           {
             "name": "Film Distribution Partners LLC",
-            "role": "Manager"
+            "role": "Manager",
+            "entity_type": "organization"
           },
           {
             "name": "Creative Artists Management",
-            "role": "Representative"
+            "role": "Representative",
+            "entity_type": "individual"
           }
         ],
         "dates": [
@@ -2396,19 +2610,23 @@
         "parties": [
           {
             "name": "Manufacturing Workers Union Local 247",
-            "role": "Representative"
+            "role": "Representative",
+            "entity_type": "individual"
           },
           {
             "name": "Industrial Production Corp.",
-            "role": "Company"
+            "role": "Company",
+            "entity_type": "individual"
           },
           {
             "name": "Union Benefits Trust",
-            "role": "Administrator"
+            "role": "Administrator",
+            "entity_type": "individual"
           },
           {
             "name": "Andrew Martinez",
-            "role": "Service Provider"
+            "role": "Service Provider",
+            "entity_type": "individual"
           }
         ],
         "dates": [
@@ -2437,19 +2655,23 @@
         "parties": [
           {
             "name": "Defense Contractor LLC",
-            "role": "Service Provider"
+            "role": "Service Provider",
+            "entity_type": "organization"
           },
           {
             "name": "Department of Defense",
-            "role": "Client"
+            "role": "Client",
+            "entity_type": "individual"
           },
           {
             "name": "Jennifer Park",
-            "role": "Officer"
+            "role": "Officer",
+            "entity_type": "individual"
           },
           {
             "name": "Government Audit Services Inc.",
-            "role": "Service Provider"
+            "role": "Service Provider",
+            "entity_type": "organization"
           }
         ],
         "dates": [
@@ -2478,19 +2700,23 @@
         "parties": [
           {
             "name": "Philanthropist Foundation",
-            "role": "Sponsor"
+            "role": "Sponsor",
+            "entity_type": "individual"
           },
           {
             "name": "Community College District",
-            "role": "Assignee"
+            "role": "Assignee",
+            "entity_type": "individual"
           },
           {
             "name": "Educational Fund Advisors LLC",
-            "role": "Manager"
+            "role": "Manager",
+            "entity_type": "organization"
           },
           {
             "name": "Lisa Thompson",
-            "role": "Manager"
+            "role": "Manager",
+            "entity_type": "individual"
           }
         ],
         "dates": [
@@ -2519,7 +2745,7 @@
       }
     },
     {
-      "text": "The International Trade Agreement signed on August 16, 2027, between Global Exports Inc., a Delaware corporation, and European Import SA facilitates the sale of agricultural machinery to European markets. The trade relationship extends 8 years, effective October 1, 2027, through September 30, 2035. Minimum annual purchase commitments total €15,000,000 with payment terms of 90 days from shipment. Export credit insurance coverage is provided by Trade Insurance Corp. with 90% coverage of shipment values. Customs clearance services will be handled by International Freight Forwarders LLC. Trade compliance officer David Wilson will ensure adherence to export regulations. Currency hedging arrangements must be reviewed annually each October 1st.",
+      "text": "The International Trade Agreement signed on August 16, 2027, between Global Exports Inc., a Delaware corporation, and European Import SA facilitates the sale of agricultural machinery to European markets. The trade relationship extends 8 years, effective October 1, 2027, through September 30, 2035. Minimum annual purchase commitments total \u20ac15,000,000 with payment terms of 90 days from shipment. Export credit insurance coverage is provided by Trade Insurance Corp. with 90% coverage of shipment values. Customs clearance services will be handled by International Freight Forwarders LLC. Trade compliance officer David Wilson will ensure adherence to export regulations. Currency hedging arrangements must be reviewed annually each October 1st.",
       "expected_output": {
         "parties": [
           {
@@ -2529,19 +2755,23 @@
           },
           {
             "name": "European Import SA",
-            "role": "Buyer"
+            "role": "Buyer",
+            "entity_type": "organization"
           },
           {
             "name": "Trade Insurance Corp.",
-            "role": "Service Provider"
+            "role": "Service Provider",
+            "entity_type": "individual"
           },
           {
             "name": "International Freight Forwarders LLC",
-            "role": "Service Provider"
+            "role": "Service Provider",
+            "entity_type": "organization"
           },
           {
             "name": "David Wilson",
-            "role": "Officer"
+            "role": "Officer",
+            "entity_type": "individual"
           }
         ],
         "dates": [
@@ -2576,11 +2806,13 @@
           },
           {
             "name": "Pharmacovigilance Services LLC",
-            "role": "Administrator"
+            "role": "Administrator",
+            "entity_type": "organization"
           },
           {
             "name": "Dr. Rachel Green",
-            "role": "Legal Counsel"
+            "role": "Legal Counsel",
+            "entity_type": "individual"
           }
         ],
         "dates": [
@@ -2617,19 +2849,23 @@
         "parties": [
           {
             "name": "Athletic Apparel Corp.",
-            "role": "Sponsor"
+            "role": "Sponsor",
+            "entity_type": "individual"
           },
           {
             "name": "Professional Soccer League",
-            "role": "Owner"
+            "role": "Owner",
+            "entity_type": "individual"
           },
           {
             "name": "Sports Marketing Agency LLC",
-            "role": "Manager"
+            "role": "Manager",
+            "entity_type": "organization"
           },
           {
             "name": "Sports Agent Network",
-            "role": "Administrator"
+            "role": "Administrator",
+            "entity_type": "individual"
           }
         ],
         "dates": [
@@ -2659,19 +2895,23 @@
           },
           {
             "name": "Accident Victim Trust",
-            "role": "Claimant"
+            "role": "Claimant",
+            "entity_type": "individual"
           },
           {
             "name": "Annuity Services Corp.",
-            "role": "Administrator"
+            "role": "Administrator",
+            "entity_type": "organization"
           },
           {
             "name": "Plaintiff's Law Firm LLP",
-            "role": "Legal Counsel"
+            "role": "Legal Counsel",
+            "entity_type": "organization"
           },
           {
             "name": "Lien Resolution Specialists Inc.",
-            "role": "Service Provider"
+            "role": "Service Provider",
+            "entity_type": "individual"
           }
         ],
         "dates": [
@@ -2700,23 +2940,28 @@
         "parties": [
           {
             "name": "Maritime Shipping Corp.",
-            "role": "Owner"
+            "role": "Owner",
+            "entity_type": "individual"
           },
           {
             "name": "Cargo Transport LLC",
-            "role": "Service Provider"
+            "role": "Service Provider",
+            "entity_type": "organization"
           },
           {
             "name": "International Port Services Inc.",
-            "role": "Agent"
+            "role": "Agent",
+            "entity_type": "organization"
           },
           {
             "name": "Ocean Insurance Underwriters",
-            "role": "Service Provider"
+            "role": "Service Provider",
+            "entity_type": "individual"
           },
           {
             "name": "Elena Rodriguez",
-            "role": "Professional"
+            "role": "Professional",
+            "entity_type": "individual"
           }
         ],
         "dates": [
@@ -2750,15 +2995,18 @@
           },
           {
             "name": "Enterprise Client Corp.",
-            "role": "Beneficiary"
+            "role": "Beneficiary",
+            "entity_type": "individual"
           },
           {
             "name": "Technology Escrow Services LLC",
-            "role": "Agent"
+            "role": "Agent",
+            "entity_type": "organization"
           },
           {
             "name": "Independent Testing Labs Inc.",
-            "role": "Service Provider"
+            "role": "Service Provider",
+            "entity_type": "individual"
           }
         ],
         "dates": [
@@ -2783,23 +3031,28 @@
         "parties": [
           {
             "name": "Fashion Brand Corp.",
-            "role": "Sponsor"
+            "role": "Sponsor",
+            "entity_type": "individual"
           },
           {
             "name": "Celebrity Artist LLC",
-            "role": "Sponsor"
+            "role": "Sponsor",
+            "entity_type": "organization"
           },
           {
             "name": "Celebrity Management Inc.",
-            "role": "Manager"
+            "role": "Manager",
+            "entity_type": "individual"
           },
           {
             "name": "Creative Agency Partners LLC",
-            "role": "Professional"
+            "role": "Professional",
+            "entity_type": "organization"
           },
           {
             "name": "Sarah Mitchell",
-            "role": "Agent"
+            "role": "Agent",
+            "entity_type": "individual"
           }
         ],
         "dates": [
@@ -2824,23 +3077,28 @@
         "parties": [
           {
             "name": "Aerospace Launch Corp.",
-            "role": "Service Provider"
+            "role": "Service Provider",
+            "entity_type": "individual"
           },
           {
             "name": "Telecommunications Satellite LLC",
-            "role": "Owner"
+            "role": "Owner",
+            "entity_type": "organization"
           },
           {
             "name": "Space Insurance Consortium",
-            "role": "Service Provider"
+            "role": "Service Provider",
+            "entity_type": "individual"
           },
           {
             "name": "Ground Operations Inc.",
-            "role": "Service Provider"
+            "role": "Service Provider",
+            "entity_type": "individual"
           },
           {
             "name": "Dr. Michael Chen",
-            "role": "Officer"
+            "role": "Officer",
+            "entity_type": "individual"
           }
         ],
         "dates": [
@@ -2873,7 +3131,8 @@
         "parties": [
           {
             "name": "Agricultural Water District",
-            "role": "Seller"
+            "role": "Seller",
+            "entity_type": "individual"
           },
           {
             "name": "Industrial Manufacturing Corp.",
@@ -2882,19 +3141,23 @@
           },
           {
             "name": "Regional Water Authority",
-            "role": "Manager"
+            "role": "Manager",
+            "entity_type": "individual"
           },
           {
             "name": "Ecological Consulting LLC",
-            "role": "Service Provider"
+            "role": "Service Provider",
+            "entity_type": "organization"
           },
           {
             "name": "State Water Commission",
-            "role": "Authority"
+            "role": "Authority",
+            "entity_type": "individual"
           },
           {
             "name": "Hydrological Services Inc.",
-            "role": "Administrator"
+            "role": "Administrator",
+            "entity_type": "organization"
           }
         ],
         "dates": [
@@ -2927,7 +3190,8 @@
         "parties": [
           {
             "name": "Crypto Innovation Corp.",
-            "role": "Licensor"
+            "role": "Licensor",
+            "entity_type": "individual"
           },
           {
             "name": "Financial Services Bank",
@@ -2936,19 +3200,23 @@
           },
           {
             "name": "Digital Advisory LLC",
-            "role": "Advisor"
+            "role": "Advisor",
+            "entity_type": "organization"
           },
           {
             "name": "Federal Banking Authority",
-            "role": "Authority"
+            "role": "Authority",
+            "entity_type": "individual"
           },
           {
             "name": "Compliance Consulting Corp.",
-            "role": "Administrator"
+            "role": "Administrator",
+            "entity_type": "individual"
           },
           {
             "name": "Dr. Jennifer Wong",
-            "role": "Officer"
+            "role": "Officer",
+            "entity_type": "individual"
           }
         ],
         "dates": [
@@ -2985,39 +3253,48 @@
         "parties": [
           {
             "name": "Contemporary Art Museum",
-            "role": "Manager"
+            "role": "Manager",
+            "entity_type": "individual"
           },
           {
             "name": "Private Collector Foundation",
-            "role": "Investor"
+            "role": "Investor",
+            "entity_type": "individual"
           },
           {
             "name": "Metropolitan Art Center",
-            "role": "Owner"
+            "role": "Owner",
+            "entity_type": "individual"
           },
           {
             "name": "Regional Gallery",
-            "role": "Owner"
+            "role": "Owner",
+            "entity_type": "individual"
           },
           {
             "name": "International Museum",
-            "role": "Owner"
+            "role": "Owner",
+            "entity_type": "individual"
           },
           {
             "name": "Fine Arts Logistics Inc.",
-            "role": "Service Provider"
+            "role": "Service Provider",
+            "entity_type": "individual"
           },
           {
             "name": "Art Insurance Specialists LLC",
-            "role": "Service Provider"
+            "role": "Service Provider",
+            "entity_type": "organization"
           },
           {
             "name": "Dr. Amanda Foster",
-            "role": "Manager"
+            "role": "Manager",
+            "entity_type": "individual"
           },
           {
             "name": "Museum Security Services Corp.",
-            "role": "Service Provider"
+            "role": "Service Provider",
+            "entity_type": "organization"
           }
         ],
         "dates": [
@@ -3042,23 +3319,28 @@
         "parties": [
           {
             "name": "Regional Retailer LLC",
-            "role": "Seller"
+            "role": "Seller",
+            "entity_type": "organization"
           },
           {
             "name": "National Brand Corp.",
-            "role": "Seller"
+            "role": "Seller",
+            "entity_type": "individual"
           },
           {
             "name": "Franchise Lending Corp.",
-            "role": "Investor"
+            "role": "Investor",
+            "entity_type": "individual"
           },
           {
             "name": "Retail Advisory Services Inc.",
-            "role": "Advisor"
+            "role": "Advisor",
+            "entity_type": "organization"
           },
           {
             "name": "Mark Thompson",
-            "role": "Manager"
+            "role": "Manager",
+            "entity_type": "individual"
           }
         ],
         "dates": [
@@ -3091,7 +3373,8 @@
         "parties": [
           {
             "name": "University Medical Center",
-            "role": "Partner"
+            "role": "Partner",
+            "entity_type": "individual"
           },
           {
             "name": "Pharmaceutical Research Corp.",
@@ -3100,19 +3383,23 @@
           },
           {
             "name": "Patent Strategy LLC",
-            "role": "Manager"
+            "role": "Manager",
+            "entity_type": "organization"
           },
           {
             "name": "Dr. Robert Kim",
-            "role": "Professional"
+            "role": "Professional",
+            "entity_type": "individual"
           },
           {
             "name": "Clinical Regulatory Services Inc.",
-            "role": "Administrator"
+            "role": "Administrator",
+            "entity_type": "organization"
           },
           {
             "name": "Clinical Data Solutions LLC",
-            "role": "Service Provider"
+            "role": "Service Provider",
+            "entity_type": "organization"
           }
         ],
         "dates": [
@@ -3154,11 +3441,13 @@
           },
           {
             "name": "Riverside Manufacturing Partners",
-            "role": "Owner"
+            "role": "Owner",
+            "entity_type": "individual"
           },
           {
             "name": "Environmental Protection Agency",
-            "role": "Authority"
+            "role": "Authority",
+            "entity_type": "individual"
           },
           {
             "name": "Jennifer Walsh",
@@ -3188,19 +3477,23 @@
         "parties": [
           {
             "name": "Titan Industries Corp.",
-            "role": "Borrower"
+            "role": "Borrower",
+            "entity_type": "individual"
           },
           {
             "name": "Metropolitan Bank",
-            "role": "Lender"
+            "role": "Lender",
+            "entity_type": "organization"
           },
           {
             "name": "First National Trust Company",
-            "role": "Agent"
+            "role": "Agent",
+            "entity_type": "organization"
           },
           {
             "name": "Baker & Associates LLC",
-            "role": "Financial Advisor"
+            "role": "Financial Advisor",
+            "entity_type": "organization"
           },
           {
             "name": "Thomas Mitchell",
@@ -3230,7 +3523,8 @@
         "parties": [
           {
             "name": "Pacific Manufacturing Ltd.",
-            "role": "Seller"
+            "role": "Seller",
+            "entity_type": "individual"
           },
           {
             "name": "Global Retail Network Inc.",
@@ -3239,7 +3533,8 @@
           },
           {
             "name": "Quality Assurance Solutions LLC",
-            "role": "Service Provider"
+            "role": "Service Provider",
+            "entity_type": "organization"
           },
           {
             "name": "David Chen",
@@ -3283,11 +3578,13 @@
           },
           {
             "name": "Deloitte Tax Advisory Services",
-            "role": "Advisor"
+            "role": "Advisor",
+            "entity_type": "organization"
           },
           {
             "name": "Ernst & Young Luxembourg",
-            "role": "Administrator"
+            "role": "Administrator",
+            "entity_type": "individual"
           },
           {
             "name": "Sarah Williams",
@@ -3321,7 +3618,8 @@
         "parties": [
           {
             "name": "CryptoTrade Exchange Platform",
-            "role": "Administrator"
+            "role": "Administrator",
+            "entity_type": "individual"
           },
           {
             "name": "Blockchain Innovations Corp.",
@@ -3330,11 +3628,13 @@
           },
           {
             "name": "Digital Asset Custody Services LLC",
-            "role": "Administrator"
+            "role": "Administrator",
+            "entity_type": "organization"
           },
           {
             "name": "Blockchain Security Auditors Inc.",
-            "role": "Service Provider"
+            "role": "Service Provider",
+            "entity_type": "individual"
           },
           {
             "name": "Alex Rodriguez",
@@ -3368,7 +3668,8 @@
         "parties": [
           {
             "name": "Green Energy Solutions Inc.",
-            "role": "Buyer"
+            "role": "Buyer",
+            "entity_type": "individual"
           },
           {
             "name": "Rainforest Conservation Partners",
@@ -3377,11 +3678,13 @@
           },
           {
             "name": "Climate Verification Services International",
-            "role": "Service Provider"
+            "role": "Service Provider",
+            "entity_type": "organization"
           },
           {
             "name": "Carbon Registry Foundation",
-            "role": "Administrator"
+            "role": "Administrator",
+            "entity_type": "individual"
           },
           {
             "name": "Maria Santos",
@@ -3411,19 +3714,23 @@
         "parties": [
           {
             "name": "SecureIT Response Team LLC",
-            "role": "Service Provider"
+            "role": "Service Provider",
+            "entity_type": "organization"
           },
           {
             "name": "DataTech Corporation",
-            "role": "Client"
+            "role": "Client",
+            "entity_type": "organization"
           },
           {
             "name": "CyberInsurance Partners",
-            "role": "Service Provider"
+            "role": "Service Provider",
+            "entity_type": "individual"
           },
           {
             "name": "Digital Forensics Experts Inc.",
-            "role": "Service Provider"
+            "role": "Service Provider",
+            "entity_type": "individual"
           },
           {
             "name": "James Park",
@@ -3467,11 +3774,13 @@
           },
           {
             "name": "NASA Technology Transfer Office",
-            "role": "Authority"
+            "role": "Authority",
+            "entity_type": "individual"
           },
           {
             "name": "Aerospace Testing Facilities LLC",
-            "role": "Service Provider"
+            "role": "Service Provider",
+            "entity_type": "organization"
           },
           {
             "name": "Dr. Lisa Chang",
@@ -3515,11 +3824,13 @@
           },
           {
             "name": "Grain Quality Assurance Inc.",
-            "role": "Service Provider"
+            "role": "Service Provider",
+            "entity_type": "individual"
           },
           {
             "name": "Chicago Mercantile Exchange",
-            "role": "Administrator"
+            "role": "Administrator",
+            "entity_type": "individual"
           },
           {
             "name": "Robert Johnson",
@@ -3555,11 +3866,13 @@
           },
           {
             "name": "Green-e Certification Body",
-            "role": "Service Provider"
+            "role": "Service Provider",
+            "entity_type": "individual"
           },
           {
             "name": "Energy Trading Clearinghouse",
-            "role": "Administrator"
+            "role": "Administrator",
+            "entity_type": "individual"
           },
           {
             "name": "Emily Davis",
@@ -3602,15 +3915,18 @@
           },
           {
             "name": "Therapeutic Innovations Corp.",
-            "role": "Sponsor"
+            "role": "Sponsor",
+            "entity_type": "individual"
           },
           {
             "name": "Food and Drug Administration",
-            "role": "Authority"
+            "role": "Authority",
+            "entity_type": "individual"
           },
           {
             "name": "Independent Review Board LLC",
-            "role": "Service Provider"
+            "role": "Service Provider",
+            "entity_type": "organization"
           },
           {
             "name": "Dr. Amanda Foster",
@@ -3653,15 +3969,18 @@
           },
           {
             "name": "International Trade Consortium",
-            "role": "Service Provider"
+            "role": "Service Provider",
+            "entity_type": "individual"
           },
           {
             "name": "Lloyd's of London",
-            "role": "Service Provider"
+            "role": "Service Provider",
+            "entity_type": "individual"
           },
           {
             "name": "Port Authority Services",
-            "role": "Manager"
+            "role": "Manager",
+            "entity_type": "organization"
           },
           {
             "name": "Captain Elena Rodriguez",
@@ -3699,19 +4018,23 @@
         "parties": [
           {
             "name": "Pharma Solutions International",
-            "role": "Licensee"
+            "role": "Licensee",
+            "entity_type": "individual"
           },
           {
             "name": "University Research Institute",
-            "role": "Licensor"
+            "role": "Licensor",
+            "entity_type": "individual"
           },
           {
             "name": "National Institutes of Health",
-            "role": "Owner"
+            "role": "Owner",
+            "entity_type": "individual"
           },
           {
             "name": "Technology Transfer Associates",
-            "role": "Administrator"
+            "role": "Administrator",
+            "entity_type": "individual"
           },
           {
             "name": "Dr. Michael Zhang",
@@ -3754,15 +4077,18 @@
           },
           {
             "name": "Metropolitan Manufacturing District",
-            "role": "Client"
+            "role": "Client",
+            "entity_type": "individual"
           },
           {
             "name": "Environmental Protection Agency",
-            "role": "Authority"
+            "role": "Authority",
+            "entity_type": "individual"
           },
           {
             "name": "Green Certification Institute",
-            "role": "Service Provider"
+            "role": "Service Provider",
+            "entity_type": "individual"
           },
           {
             "name": "Susan Martinez",
@@ -3800,7 +4126,8 @@
         "parties": [
           {
             "name": "Sarah Thompson",
-            "role": "Sponsor"
+            "role": "Sponsor",
+            "entity_type": "individual"
           },
           {
             "name": "Premier Luxury Brands Inc.",
@@ -3809,11 +4136,13 @@
           },
           {
             "name": "Talent Management Group LLC",
-            "role": "Representative"
+            "role": "Representative",
+            "entity_type": "organization"
           },
           {
             "name": "Creative Marketing Agency",
-            "role": "Professional"
+            "role": "Professional",
+            "entity_type": "individual"
           },
           {
             "name": "Jessica Williams",
@@ -3860,15 +4189,18 @@
           },
           {
             "name": "Cardiovascular Technologies Corp.",
-            "role": "Professional"
+            "role": "Professional",
+            "entity_type": "individual"
           },
           {
             "name": "Medical Device Quality Assurance LLC",
-            "role": "Service Provider"
+            "role": "Service Provider",
+            "entity_type": "organization"
           },
           {
             "name": "Food and Drug Administration",
-            "role": "Authority"
+            "role": "Authority",
+            "entity_type": "individual"
           },
           {
             "name": "Dr. Robert Kumar",
@@ -3912,11 +4244,13 @@
           },
           {
             "name": "Monetary Authority of Singapore",
-            "role": "Authority"
+            "role": "Authority",
+            "entity_type": "individual"
           },
           {
             "name": "Basel Banking Consultants LLC",
-            "role": "Advisor"
+            "role": "Advisor",
+            "entity_type": "organization"
           },
           {
             "name": "Thomas Chen",
@@ -3954,7 +4288,8 @@
         "parties": [
           {
             "name": "Food Safety Solutions International",
-            "role": "Service Provider"
+            "role": "Service Provider",
+            "entity_type": "individual"
           },
           {
             "name": "Organic Harvest Foods Inc.",
@@ -3963,11 +4298,13 @@
           },
           {
             "name": "United States Department of Agriculture",
-            "role": "Authority"
+            "role": "Authority",
+            "entity_type": "individual"
           },
           {
             "name": "International Food Safety Institute",
-            "role": "Service Provider"
+            "role": "Service Provider",
+            "entity_type": "individual"
           },
           {
             "name": "Linda Rodriguez",
@@ -4015,11 +4352,13 @@
           },
           {
             "name": "Federal Communications Commission",
-            "role": "Authority"
+            "role": "Authority",
+            "entity_type": "individual"
           },
           {
             "name": "Telecom Engineering Services LLC",
-            "role": "Professional"
+            "role": "Professional",
+            "entity_type": "organization"
           },
           {
             "name": "Kevin Walsh",
@@ -4065,19 +4404,23 @@
         "parties": [
           {
             "name": "Stadium Operations International LLC",
-            "role": "Service Provider"
+            "role": "Service Provider",
+            "entity_type": "organization"
           },
           {
             "name": "City Sports Authority",
-            "role": "Owner"
+            "role": "Owner",
+            "entity_type": "individual"
           },
           {
             "name": "Department of Public Safety",
-            "role": "Service Provider"
+            "role": "Service Provider",
+            "entity_type": "individual"
           },
           {
             "name": "Entertainment Venue Services Inc.",
-            "role": "Manager"
+            "role": "Manager",
+            "entity_type": "organization"
           },
           {
             "name": "Mark Thompson",
