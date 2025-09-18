@@ -1,5 +1,7 @@
 # Fine-tune a small language model for open book question-answering
 
+[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/distil-labs/distil-labs-examples/blob/main/question-answering-tutorial/question-answering.ipynb)
+
 The **distil labs** platform allows anyone to benefit from state-of-the-art methods for model fine-tuning. You don’t need to be a machine learning expert to get a highly performant model customized to your needs in a matter of a day. 
 
 
@@ -23,30 +25,7 @@ Each example dirctory outlined below contains the 4 main components of a task:
 
 You can modify the job description using any text editor and the datasets with any tables editor such as excel, google sheets, etc.
 
-#### [HotpotQA Dataset](data-hotpotqa/)
+#### [HotpotQA Dataset](data/)
 This directory contains task definitions for question answering using the [HotpotQA dataset](https://arxiv.org/abs/1809.09600). The tasks focus on developing models that can answer complex, multi-hop questions requiring reasoning across multiple documents. 
 
-### SLM Training
-Use the [question-answering-training.ipynb](question-answering-training.ipynb) notebook to train a small language model (SLM) with the **distil labs** platform. We will follow a three-step process and, at the end, download our own SLM for local deployment.
-
-To prepare for the training kick-off, modify the data in one of the examples directory (feel free to use excel/google sheets to edit the .csv files) or simply pick and example as is.
-
-### Model Deployment
-
-In the [question-answering-model-deployment.ipynb](question-answering-model-deployment.ipynb) notebook, we will deploy a trained question-answering small language model (SLM) with the **distil labs** platform. 
-
-The model binaries can be downloaded using the `model` API by downloading the tarball and extracting into to the `model` directory.  The downloaded file will be called `*-model.tar`. Once extracted, you should find a `model/` directory which should be copied to the same directory as this notebook. At this point, your current working directory should look something like:
-
-```
-├── README.md
-├── question-answering-model-deployment.ipynb
-├── model
-│   ├── config.json
-│   ├── model.safetensors
-│   ├── special_tokens_map.json
-│   ├── tokenizer.json
-│   ├── tokenizer_config.json
-│   ├── training-logs.csv
-│   └── training-logs.json
-```
 

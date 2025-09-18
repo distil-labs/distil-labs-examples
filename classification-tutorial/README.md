@@ -1,5 +1,7 @@
 # Fine-tune a small language model for classification
 
+[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/distil-labs/distil-labs-examples/blob/main/classification-tutorial/classification.ipynb)
+
 The **distil labs** platform allows anyone to benefit from state-of-the-art methods for model fine-tuning. You don’t need to be a machine learning expert to get a highly performant model customized to your needs in a matter of a day. 
 
 
@@ -35,28 +37,3 @@ This directory contains task definitions for mental health-related text classifi
 
 #### [Occupational Injury Data](data-injury/)
 This directory contains task definitions for classifying workplace injury descriptions according to the Occupational Injuries and Illnesses Classification System (OIICS). The tasks outline requirements for mapping free-text injury narratives to seven standardized categories, including violence, transportation incidents, fires and explosions, and more.
-
-### SLM Training
-Use the [classification-training.ipynb](classification-training.ipynb) notebook to train a small language model (SLM) with the **distil labs** platform. We will follow a three-step process and, at the end, download our own SLM for local deployment.
-
-To prepare for the training kick-off, modify the data in one of the examples directory (feel free to use excel/google sheets to edit the .csv files) or simply pick and example as is.
-
-### Model Deployment
-
-In the [classification-model-deployment.ipynb](classification-model-deployment.ipynb) notebook, we will deploy a trained classification small language model (SLM) with the **distil labs** platform. 
-
-The model binaries can be downloaded using the `model` API by downloading the tarball and extracting into to the `model` directory.  The downloaded file will be called `*-model.tar`. Once extracted, you should find a `model/` directory which should be copied to the same directory as this notebook. At this point, your current working directory should look something like:
-
-```
-├── README.md
-├── classification-model-deployment.ipynb
-├── model
-│   ├── config.json
-│   ├── model.safetensors
-│   ├── special_tokens_map.json
-│   ├── tokenizer.json
-│   ├── tokenizer_config.json
-│   ├── training-logs.csv
-│   └── training-logs.json
-```
-
