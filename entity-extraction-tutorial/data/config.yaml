@@ -1,0 +1,10 @@
+base:
+  task: question-answering-open-book
+evaluation:
+  num_few_shot_examples: 0
+setup:
+  student_model_name: HuggingFaceTB/SmolLM2-135M-Instruct
+synthgen:
+  data_generation_strategy: qa-open-book-information-extraction
+tuning:
+  num_train_epochs: 16
