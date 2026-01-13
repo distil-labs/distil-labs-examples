@@ -1,0 +1,5 @@
+{
+  "task_description": "Translate the English text to Russian. Translate English text (words, phrases, or sentences) into accurate, natural-sounding Russian while preserving meaning, tone, and register.",
+  "input_description": "English legal text consisting of statutory frameworks, judicial cross-referencing and sections of text from UK/Common Law texts.",
+  "llm_as_a_judge_instructions": "Evaluate if the predicted translation accurately conveys the English source meaning in natural Russian."
+}
