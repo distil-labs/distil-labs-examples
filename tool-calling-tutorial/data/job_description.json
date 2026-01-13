@@ -1,0 +1,129 @@
+{
+  "task_description": "Respond with the next tool call to analyze expenses",
+  "tools": [
+    {
+        "type": "function",
+        "function": {
+            "name": "count_transactions",
+            "description": "Count the number of transactions matching the criteria. Can filter by category, date range, and amount limit.",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "category": {
+                        "type": "string",
+                        "description": "The category to filter by (e.g., 'groceries', 'salary', 'entertainment'). If not provided, counts all categories."
+                    },
+                    "start_date": {
+                        "type": "string",
+                        "description": "Start date in YYYY-MM-DD format. If not provided, uses earliest date in data."
+                    },
+                    "end_date": {
+                        "type": "string",
+                        "description": "End date in YYYY-MM-DD format. If not provided, uses latest date in data."
+                    },
+                    "min_amount": {
+                        "type": "number",
+                        "description": "Optional minimum amount limit. Only count transactions with absolute value greater than or equal to this."
+                    },
+                    "max_amount": {
+                        "type": "number",
+                        "description": "Optional maximum amount limit. Only count transactions with absolute value less than or equal to this."
+                    }
+                },
+                "required": []
+            }
+        }
+    },
+    {
+        "type": "function",
+        "function": {
+            "name": "sum_transactions",
+            "description": "Sum the total amount of transactions matching the criteria. Returns negative for expenses, positive for income (like salary). Can filter by category, date range, and amount limit.",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "category": {
+                        "type": "string",
+                        "description": "The category to filter by (e.g., 'groceries', 'salary', 'entertainment'). If not provided, sums all categories."
+                    },
+                    "start_date": {
+                        "type": "string",
+                        "description": "Start date in YYYY-MM-DD format. If not provided, uses earliest date in data."
+                    },
+                    "end_date": {
+                        "type": "string",
+                        "description": "End date in YYYY-MM-DD format. If not provided, uses latest date in data."
+                    },
+                    "min_amount": {
+                        "type": "number",
+                        "description": "Optional minimum amount limit. Only count transactions with absolute value greater than or equal to this."
+                    },
+                    "max_amount": {
+                        "type": "number",
+                        "description": "Optional maximum amount limit. Only sum transactions with absolute value less than or equal to this."
+                    }
+                },
+                "required": []
+            }
+        }
+    },
+    {
+        "type": "function",
+        "function": {
+            "name": "compare_periods",
+            "description": "Compare total spending or income between two time periods. Returns the sum for each period and the difference. Useful for questions like 'did I spend more in Q1 or Q2?'",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "period1_start": {
+                        "type": "string",
+                        "description": "Start date of first period in YYYY-MM-DD format"
+                    },
+                    "period1_end": {
+                        "type": "string",
+                        "description": "End date of first period in YYYY-MM-DD format"
+                    },
+                    "period2_start": {
+                        "type": "string",
+                        "description": "Start date of second period in YYYY-MM-DD format"
+                    },
+                    "period2_end": {
+                        "type": "string",
+                        "description": "End date of second period in YYYY-MM-DD format"
+                    },
+                    "category": {
+                        "type": "string",
+                        "description": "Optional category to filter by. If not provided, compares all transactions."
+                    }
+                },
+                "required": ["period1_start", "period1_end", "period2_start", "period2_end"]
+            }
+        }
+    },
+    {
+        "type": "function",
+        "function": {
+            "name": "average_monthly_expenses",
+            "description": "Calculate the average monthly expenses over a time period. Only includes expenses (negative amounts), not income. Can optionally filter by category.",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "start_date": {
+                        "type": "string",
+                        "description": "Start date in YYYY-MM-DD format"
+                    },
+                    "end_date": {
+                        "type": "string",
+                        "description": "End date in YYYY-MM-DD format"
+                    },
+                    "category": {
+                        "type": "string",
+                        "description": "Optional category to filter by (e.g., 'groceries', 'entertainment'). If not provided, includes all expense categories."
+                    }
+                },
+                "required": ["start_date", "end_date"]
+            }
+        }
+    }
+ ]
+}

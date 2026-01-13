@@ -1,0 +1,12 @@
+base:
+  task: tool-calling-closed-book
+  student_model_name: Llama-3.2-3B-Instruct
+  teacher_model_name: openai.gpt-oss-120b
+synthgen:
+  generation_target: 2500
+tuning:
+  num_train_epochs: 4
+  learning_rate: 2e-5
+  learning_rate_scheduler: linear
+  lora_r: 128
+  per_device_train_batch_size: 1
