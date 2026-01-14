@@ -5,6 +5,40 @@ This folder contains the step by step instructions on how to finetune a question
 
 In this particular example, we are translating legal text from English to Russian. The specific legal text consists of statutory frameworks, judicial cross-referencing and sections of text from UK/Common Law texts. Whilst many open-source language models have been trained on multilingual data (i.e. Qwen, Deepseek), they are unlikely to be trained with a specialised domain dataset such as this legal dataset. As such, there is a use-case to finetune a small language model so that it can become specialised for this task.
 
+## Installation
+
+Run the following command to install the distil labs CLI:
+
+```
+curl -fsSL https://cli-assets.distillabs.ai/install.sh | sh
+```
+
+To ensure everything is installed correctly, run the command:
+
+```
+distil
+```
+
+And you should see the available commands.
+
+If you haven't already registered, you can do so using the command:
+
+```
+distil register
+```
+
+If you already have an account, you can enter your username and password when running the command:
+
+```
+distil login
+```
+
+To verify you have successfully logged in, run:
+
+```
+distil whoami
+```
+
 ## Folder layout
 
 ```
@@ -54,41 +88,6 @@ If you read our docs, you will see that the other task types have other requirem
 
 ### Config
 The config file allows us to have fine-grained control over the pipeline. It allows us to control aspects of the pipeline relating to the tuning, synthetic data generation and evaluation. This is where we can define which teacher models to use, which student model to finetune and a host of other options. When we iterate on our development and try to improve upon our model, we typically make changs to the config and the job description whilst the other inputs remain static.
-
-
-## Installation
-
-Run the following command to install the distil labs CLI:
-
-```
-curl -fsSL https://cli-assets.distillabs.ai/install.sh | sh
-```
-
-To ensure everything is installed correctly, run the command:
-
-```
-distil
-```
-
-And you should see the available commands.
-
-If you haven't already registered, you can do so using the command:
-
-```
-distil register
-```
-
-If you already have an account, you can enter your username and password when running the command:
-
-```
-distil login
-```
-
-To verify you have successfully logged in, run:
-
-```
-distil whoami
-```
 
 
 ## Create model and run pipeline using CLI
